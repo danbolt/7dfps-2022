@@ -7,8 +7,6 @@ const BESPOKE_MOUSE_SENSITIVITY_MODIFIER = 2.0
 export var movement_speed: float = 5.216
 export var turn_speed: float = 0.07125
 
-export var y_invert: bool = false
-
 var move_speed: Vector3 = Vector3.ZERO
 
 var mouse_move_accumulation: Vector2 = Vector2.ZERO
@@ -20,12 +18,15 @@ func _input(event):
 	mouse_move_accumulation += (event as InputEventMouseMotion).relative * BESPOKE_MOUSE_SENSITIVITY_MODIFIER
 
 func _physics_process(_delta):
+	var player_settings = get_node("/root/PlayerSettings")
+	var y_invert = player_settings.get_y_invert()
+	
 	var moveVector = Vector2(Input.get_axis("step_left", "step_right"), Input.get_axis("step_backward", "step_forward"))
 	var turnVector = Vector2(Input.get_axis("turn_left", "turn_right"), Input.get_axis("turn_down", "turn_up"))
 	
 	# Turn the camera
 	camera.global_rotate(Vector3.UP, turnVector.x * -1.0 * turn_speed)
-	camera.global_rotate(camera.transform.basis.x, turnVector.y * turn_speed)
+	camera.global_rotate(camera.transform.basis.x, turnVector.y * turn_speed * (-1.0 if y_invert else 1.0 ))
 	
 	# Mouselook for camera turning
 	if (not mouse_move_accumulation.is_equal_approx(Vector2.ZERO)):

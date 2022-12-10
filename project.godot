@@ -36,6 +36,10 @@ config/name="7dfps-2022"
 run/main_scene="res://etc/game_root.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerSettings="*res://etc/PlayerSettings.gd"
+
 [display]
 
 window/size/width=1280

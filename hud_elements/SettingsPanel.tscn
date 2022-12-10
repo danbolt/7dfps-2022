@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://hud_elements/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://hud_elements/SettingsPanel.gd" type="Script" id=2]
+
+[node name="SettingsPanel" type="Panel"]
+margin_right = 436.0
+margin_bottom = 172.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 436.0
+margin_bottom = 172.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 436.0
+margin_bottom = 51.0
+text = "Settings
+"
+align = 1
+valign = 1
+
+[node name="YInvert" type="CheckButton" parent="VBoxContainer"]
+margin_top = 55.0
+margin_right = 436.0
+margin_bottom = 95.0
+text = "Y Invert"

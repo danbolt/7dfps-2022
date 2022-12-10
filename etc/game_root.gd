@@ -23,7 +23,9 @@ func handle_pause_press():
 		unpause_game()
 
 func _ready():
-	unpause_game()
+	get_tree().paused = false
+	pause_root.visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	var _pause_connect_result = pause_root.connect("done_exiting", self, "on_decorators_done")
 
