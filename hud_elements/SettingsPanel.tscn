@@ -3,7 +3,7 @@
 [ext_resource path="res://hud_elements/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://hud_elements/SettingsPanel.gd" type="Script" id=2]
 
-[node name="SettingsPanel" type="Panel"]
+[node name="SettingsPanel" type="MarginContainer"]
 margin_right = 436.0
 margin_bottom = 172.0
 theme = ExtResource( 1 )
@@ -13,7 +13,7 @@ script = ExtResource( 2 )
 margin_right = 436.0
 margin_bottom = 172.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Settings" type="Label" parent="VBoxContainer"]
 margin_right = 436.0
 margin_bottom = 51.0
 text = "Settings
@@ -26,3 +26,43 @@ margin_top = 55.0
 margin_right = 436.0
 margin_bottom = 95.0
 text = "Y Invert"
+
+[node name="HorizSensitivity" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 99.0
+margin_right = 436.0
+margin_bottom = 123.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HorizSensitivity"]
+margin_right = 150.0
+margin_bottom = 24.0
+text = "Horizontal Sensitivity"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HorizSensitivity"]
+margin_left = 154.0
+margin_right = 415.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 261, 16 )
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+scrollable = false
+
+[node name="VerticalSensitivity" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 127.0
+margin_right = 436.0
+margin_bottom = 151.0
+
+[node name="Label" type="Label" parent="VBoxContainer/VerticalSensitivity"]
+margin_right = 131.0
+margin_bottom = 24.0
+text = "Vertical Sensitivity"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/VerticalSensitivity"]
+margin_left = 135.0
+margin_right = 396.167
+margin_bottom = 16.0
+rect_min_size = Vector2( 261.167, 16 )
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+scrollable = false
