@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/tex_gyre_heros/tex_gyre_logotype.tres" type="DynamicFont" id=1]
+[ext_resource path="res://hud_elements/angle_white.png" type="Texture" id=2]
+[ext_resource path="res://hud_elements/pause_root.gd" type="Script" id=3]
+
+[node name="pause_root" type="Control"]
+pause_mode = 2
+margin_right = 1280.0
+margin_bottom = 720.0
+script = ExtResource( 3 )
+
+[node name="alpha_backing" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.364706, 0.364706, 0.364706, 0.309804 )
+
+[node name="PausedLabel" type="Label" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+grow_horizontal = 2
+custom_constants/shadow_offset_x = 7
+custom_constants/shadow_offset_y = 7
+custom_fonts/font = ExtResource( 1 )
+text = "Paused"
+align = 1
+valign = 1
+
+[node name="Top" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TopDecorator" type="TextureRect" parent="Top"]
+margin_left = -64.0
+margin_right = 4032.0
+margin_bottom = 128.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+stretch_mode = 2
+flip_h = true
+
+[node name="Bottom" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="BottomDecorator" type="TextureRect" parent="Bottom"]
+margin_left = -64.0
+margin_top = 656.0
+margin_right = 4032.0
+margin_bottom = 784.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+stretch_mode = 2
+flip_h = true
