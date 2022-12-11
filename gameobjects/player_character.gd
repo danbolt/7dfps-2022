@@ -10,6 +10,10 @@ var subscreen_held_state: float = 0.0
 
 const BESPOKE_MOUSE_SENSITIVITY_MODIFIER = 2.0
 
+const ZOOMED_OUT_FOV = 72.0
+const ZOOMED_IN_FOV = 55.0
+var subscreen_zoom_fov: float = 0.0
+
 export var movement_speed: float = 5.216
 export var turn_speed: float = 0.07125
 
@@ -26,6 +30,9 @@ func _input(event):
 func _physics_process(_delta):
 	subscreen.transform = held_down_transform.interpolate_with(held_up_transform, subscreen_held_state)
 	subscreen_held_state = lerp(subscreen_held_state, Input.get_action_strength("ads"), 0.183)
+	
+	subscreen_zoom_fov = lerp(subscreen_zoom_fov, subscreen_held_state, 0.18)
+	camera.fov = lerp(ZOOMED_OUT_FOV, ZOOMED_IN_FOV, subscreen_zoom_fov)
 	
 	var player_settings = get_node("/root/PlayerSettings")
 	
@@ -73,4 +80,5 @@ func _ready():
 	mouse_move_accumulation = Vector2.ZERO
 	
 	subscreen_held_state = 0.0
+	subscreen_zoom_fov = 0.0
 	

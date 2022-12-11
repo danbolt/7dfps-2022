@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/lato/lato_phone.tres" type="DynamicFont" id=1]
+[ext_resource path="res://hud_elements/textures/stuck_logo.png" type="Texture" id=2]
+
+[node name="enemy_dms" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -840.0
+margin_bottom = 840.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1080.0
+margin_bottom = 1920.0
+
+[node name="Side Bar" type="ColorRect" parent="."]
+margin_right = 152.0
+margin_bottom = 1920.0
+color = Color( 0.247059, 0.054902, 0.25098, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 248.0
+margin_top = 56.0
+margin_right = 621.0
+margin_bottom = 134.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Dear Mortals,
+
+Test "
+
+[node name="StuckLogo" type="Sprite" parent="."]
+visible = false
+position = Vector2( 400, 72 )
+scale = Vector2( 0.353242, 0.353242 )
+texture = ExtResource( 2 )
