@@ -1,9 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gameobjects/player_character.gd" type="Script" id=1]
 [ext_resource path="res://shapes/player_collision_shape.tres" type="Shape" id=2]
 
 [sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="QuadMesh" id=4]
+
+[sub_resource type="ViewportTexture" id=6]
+flags = 64
+viewport_path = NodePath("PlayerMovement/Camera/Subscreen/Viewport")
+
+[sub_resource type="SpatialMaterial" id=5]
+resource_local_to_scene = true
+flags_no_depth_test = true
+albedo_texture = SubResource( 6 )
 
 [sub_resource type="CubeMesh" id=2]
 
@@ -20,6 +31,28 @@ mesh = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="PlayerMovement"]
+
+[node name="Subscreen" type="Spatial" parent="PlayerMovement/Camera"]
+transform = Transform( 0.472845, 0.398434, -0.0958452, 0.0305335, 0.140304, 0.488809, 0.438962, -0.438948, 0.0692428, 0.392, -0.372, 0.03 )
+
+[node name="Viewport" type="Viewport" parent="PlayerMovement/Camera/Subscreen"]
+size = Vector2( 240, 426 )
+handle_input_locally = false
+hdr = false
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="SubCamera" type="Camera" parent="PlayerMovement/Camera/Subscreen/Viewport"]
+transform = Transform( 0.472845, 0.398434, -0.0958452, 0.0305335, 0.140304, 0.488809, 0.438962, -0.438948, 0.0692428, 0.392, -0.372, 0.03 )
+
+[node name="MeshInstance" type="MeshInstance" parent="PlayerMovement/Camera/Subscreen"]
+transform = Transform( 1, 0, 0, 0, 1.777, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 5 )
+
+[node name="RemoteTransform" type="RemoteTransform" parent="PlayerMovement/Camera/Subscreen"]
+remote_path = NodePath("../Viewport/SubCamera")
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerMovement"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

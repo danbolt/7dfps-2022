@@ -2,6 +2,12 @@ class_name PlayerMovement extends KinematicBody
 
 onready var camera = $Camera
 
+onready var subscreen: Spatial = $Camera/Subscreen
+
+const held_up_transform = Transform(Vector3(0.978, 0.21, 0.0), Vector3(-0.21, 0.978, 0.0), Vector3(0, 0, 1), Vector3(0.207, -0.24, -1.256))
+const held_down_transform = Transform(Vector3(0.473, 0.031, 0.439), Vector3(0.398, 0.14, -0.439), Vector3(-0.096, 0.489, 0.069), Vector3(0.392, -0.372, 0.03))
+var subscreen_held_state: float = 0.0
+
 const BESPOKE_MOUSE_SENSITIVITY_MODIFIER = 2.0
 
 export var movement_speed: float = 5.216
@@ -18,6 +24,9 @@ func _input(event):
 	mouse_move_accumulation += (event as InputEventMouseMotion).relative * BESPOKE_MOUSE_SENSITIVITY_MODIFIER
 
 func _physics_process(_delta):
+	subscreen.transform = held_down_transform.interpolate_with(held_up_transform, subscreen_held_state)
+	subscreen_held_state = lerp(subscreen_held_state, Input.get_action_strength("ads"), 0.183)
+	
 	var player_settings = get_node("/root/PlayerSettings")
 	
 	var y_invert = player_settings.get_y_invert()
@@ -62,4 +71,6 @@ func _ready():
 	move_speed = Vector3.ZERO
 	
 	mouse_move_accumulation = Vector2.ZERO
+	
+	subscreen_held_state = 0.0
 	
