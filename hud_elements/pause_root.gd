@@ -26,7 +26,7 @@ func decorators_in():
 	
 	alpha_backing.rect_position = Vector2(0.0, -720)
 	var talpha = get_tree().create_tween()
-	talpha.tween_property(alpha_backing, "rect_position", Vector2(0.0, 0.0), 0.215).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	talpha.tween_property(alpha_backing, "rect_position", Vector2(0.0, 0.0), 0.5181).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	talpha.bind_node(alpha_backing)
 	
 func decorators_out():
@@ -37,11 +37,11 @@ func decorators_out():
 	var tbottom = get_tree().create_tween()
 	tbottom.tween_property(bottom, "rect_position", Vector2(0.0, 64), 0.27)
 	tbottom.bind_node(bottom)
-	var _connect_result = tbottom.connect("finished", self, "indicate_done")
 	
 	var talpha = get_tree().create_tween()
-	talpha.tween_property(alpha_backing, "rect_position", Vector2(0.0, 720.0), 0.245).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	talpha.tween_property(alpha_backing, "rect_position", Vector2(0.0, 1080.0), 0.6).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	talpha.bind_node(alpha_backing)
+	var _connect_result = talpha.connect("finished", self, "indicate_done")
 
 func _ready():
 	pass # Replace with function body.
