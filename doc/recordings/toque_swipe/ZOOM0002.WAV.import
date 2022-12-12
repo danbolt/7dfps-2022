@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ZOOM0002.WAV-e654f88687d2a6877f8398f1114cbb43.sample"
+
+[deps]
+
+source_file="res://doc/recordings/toque_swipe/ZOOM0002.WAV"
+dest_files=[ "res://.import/ZOOM0002.WAV-e654f88687d2a6877f8398f1114cbb43.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
