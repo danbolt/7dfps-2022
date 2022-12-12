@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://gameobjects/player_character.gd" type="Script" id=1]
 [ext_resource path="res://shapes/player_collision_shape.tres" type="Shape" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://fonts/tex_gyre_heros/tex_gyre_logotype.tres" type="DynamicFont" id=6]
 [ext_resource path="res://hud_elements/shapes/triangle.tres" type="PrismMesh" id=7]
 [ext_resource path="res://hud_elements/shapes/triangle_mat.tres" type="Material" id=8]
+[ext_resource path="res://hud_elements/shapes/plane.tres" type="PlaneMesh" id=9]
+[ext_resource path="res://hud_elements/shapes/triangle_mat_darker.tres" type="Material" id=10]
 
 [sub_resource type="QuadMesh" id=4]
 
@@ -122,28 +124,118 @@ vertical_alignment = 0
 uppercase = true
 line_spacing = -100.0
 
-[node name="Spatial" type="Spatial" parent="Camera/Subscreen/CameraScreen"]
+[node name="ProgressbarBacking" type="Spatial" parent="Camera/Subscreen/CameraScreen"]
+transform = Transform( 7.54979e-08, -1, -2.23517e-08, 1, 7.54979e-08, 2.98023e-08, -2.98023e-08, -2.23517e-08, 1, -0.387, 0.268, 0 )
+
+[node name="ProgressbarMesh13" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 1.49012e-08, -4.28372e-09, 0.002, -0.25, 7.39879e-09, 1.19209e-10, 1.88745e-08, 0.098, 8.74228e-11, -0.015, -0.25, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.002, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh2" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.042, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh3" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.082, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh4" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.122, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh5" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.162, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh6" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.202, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh7" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.242, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh8" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.282, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh9" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.498, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh10" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.478, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh11" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.458, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="ProgressbarMesh12" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressbarBacking"]
+transform = Transform( 0.012, -3.74144e-09, 3.33762e-18, 0, -4.28372e-09, -0.002, 4.58135e-10, 0.098, -8.74228e-11, -0.008, -0.438, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="Crosshairs" type="Spatial" parent="Camera/Subscreen/CameraScreen"]
 transform = Transform( 7.54979e-08, -1, 8.88178e-16, 1, 7.54979e-08, -1.49012e-08, 1.49012e-08, 2.01318e-15, 1, 0, 0, 0 )
 
-[node name="CSGMesh3" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
+[node name="CSGMesh3" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Crosshairs"]
 transform = Transform( 0.012, -9.31323e-09, 8.14907e-10, 1.86265e-09, 0.02, 4.19095e-09, -6.98492e-10, -2.09548e-09, 0.0321277, -0.000269532, -0.0341689, 0.000312805 )
 mesh = ExtResource( 7 )
 material = ExtResource( 8 )
 
-[node name="CSGMesh4" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
+[node name="CSGMesh4" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Crosshairs"]
 transform = Transform( -0.012, 7.91624e-09, -3.37604e-09, -1.86265e-09, -0.02, 2.09548e-09, 2.32831e-10, -4.65661e-10, 0.0321277, 0.000211522, 0.0352985, -0.000674605 )
 mesh = ExtResource( 7 )
 material = ExtResource( 8 )
 
-[node name="CSGMesh" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
+[node name="CSGMesh" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Crosshairs"]
 transform = Transform( 9.31323e-10, 0.0115339, 4.65661e-10, -0.0200798, 0, -2.32831e-09, -2.09548e-09, -1.39698e-09, 0.0321277, -0.023, 0, 5.96046e-08 )
 mesh = ExtResource( 7 )
 material = ExtResource( 8 )
 
-[node name="CSGMesh2" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
+[node name="CSGMesh2" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Crosshairs"]
 transform = Transform( 0, -0.0115339, -2.32831e-10, 0.0200798, -9.31323e-10, 0, -4.65661e-10, -2.32831e-10, 0.0321277, 0.023, -2.98023e-08, 0 )
 mesh = ExtResource( 7 )
 material = ExtResource( 8 )
+
+[node name="ProgressBar" type="Spatial" parent="Camera/Subscreen/CameraScreen"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.387, 0.268, 0 )
+
+[node name="ProgressbarMesh" type="MeshInstance" parent="Camera/Subscreen/CameraScreen/ProgressBar"]
+transform = Transform( 0.025, -3.74144e-09, 2.83698e-17, 0, -4.28372e-09, -0.017, 9.54448e-10, 0.098, -7.43094e-10, 0.025, 0, 0 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 10 )
 
 [node name="RemoteTransform" type="RemoteTransform" parent="Camera/Subscreen"]
 remote_path = NodePath("../Viewport/SubCamera")
