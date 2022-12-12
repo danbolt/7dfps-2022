@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://gameobjects/enemies/enemy.gd" type="Script" id=1]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gameobjects/enemies/DemonSphereHurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gameobjects/LevelWinZone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gameobjects/enemies/PathFlier.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CubeMesh" id=2]
 
@@ -28,7 +29,7 @@ mesh = SubResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 3 )
 
-[node name="TestDemon" type="Spatial" parent="."]
+[node name="TestDemon" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44162, 0, -4.88421 )
 script = ExtResource( 1 )
 
@@ -38,7 +39,7 @@ script = ExtResource( 1 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 
-[node name="TestDemon2" type="Spatial" parent="."]
+[node name="TestDemon2" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4.45613 )
 script = ExtResource( 1 )
 
@@ -53,3 +54,6 @@ material/0 = SubResource( 4 )
 
 [node name="LevelWinZone" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.12783 )
+
+[node name="PathFlier" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -10.6818 )

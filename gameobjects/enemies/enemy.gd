@@ -1,4 +1,4 @@
-class_name Enemy extends Node
+class_name Enemy extends KinematicBody
 
 signal been_struck(hurtbox)
 
@@ -9,9 +9,6 @@ func on_died():
 
 func on_hurtbox_struck(hurtbox: DemonHurtbox):
 	emit_signal("been_struck", hurtbox)
-	
-	# TODO: Let something else handle this
-	emit_signal("died")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

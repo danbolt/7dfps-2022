@@ -65,7 +65,7 @@ func _physics_process(delta):
 		
 	
 	if current_hurtbox != null and (Input.is_action_pressed("fire")):
-		bar_fill_percentage += delta * 0.24
+		bar_fill_percentage += delta * 0.44
 		
 		if (bar_fill_percentage >= 1.0):
 			current_hurtbox.strike()
