@@ -42,3 +42,7 @@ func _process(_delta):
 		no_target_text.visible = true
 		target_info_text.visible = true
 		target_data_text.visible = false
+		
+	if result and (result.collider is DemonHurtbox):
+		if (Input.is_action_just_pressed("fire")):
+			(result.collider as DemonHurtbox).strike()

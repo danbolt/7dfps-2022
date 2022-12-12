@@ -6,6 +6,8 @@
 [ext_resource path="res://gameobjects/player_apps.gd" type="Script" id=4]
 [ext_resource path="res://fonts/pt_mono/pt_mono_app_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://fonts/tex_gyre_heros/tex_gyre_logotype.tres" type="DynamicFont" id=6]
+[ext_resource path="res://hud_elements/shapes/triangle.tres" type="PrismMesh" id=7]
+[ext_resource path="res://hud_elements/shapes/triangle_mat.tres" type="Material" id=8]
 
 [sub_resource type="QuadMesh" id=4]
 
@@ -23,15 +25,6 @@ emission_energy = 0.5
 emission_operator = 0
 emission_on_uv2 = false
 emission_texture = SubResource( 6 )
-
-[sub_resource type="PrismMesh" id=12]
-size = Vector3( 2, 2, 0.01 )
-
-[sub_resource type="SpatialMaterial" id=11]
-render_priority = 1
-flags_unshaded = true
-flags_no_depth_test = true
-albedo_color = Color( 0.996078, 0.870588, 0.498039, 1 )
 
 [sub_resource type="QuadMesh" id=7]
 
@@ -134,23 +127,23 @@ transform = Transform( 7.54979e-08, -1, 8.88178e-16, 1, 7.54979e-08, -1.49012e-0
 
 [node name="CSGMesh3" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
 transform = Transform( 0.012, -9.31323e-09, 8.14907e-10, 1.86265e-09, 0.02, 4.19095e-09, -6.98492e-10, -2.09548e-09, 0.0321277, -0.000269532, -0.0341689, 0.000312805 )
-mesh = SubResource( 12 )
-material = SubResource( 11 )
+mesh = ExtResource( 7 )
+material = ExtResource( 8 )
 
 [node name="CSGMesh4" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
 transform = Transform( -0.012, 7.91624e-09, -3.37604e-09, -1.86265e-09, -0.02, 2.09548e-09, 2.32831e-10, -4.65661e-10, 0.0321277, 0.000211522, 0.0352985, -0.000674605 )
-mesh = SubResource( 12 )
-material = SubResource( 11 )
+mesh = ExtResource( 7 )
+material = ExtResource( 8 )
 
 [node name="CSGMesh" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
 transform = Transform( 9.31323e-10, 0.0115339, 4.65661e-10, -0.0200798, 0, -2.32831e-09, -2.09548e-09, -1.39698e-09, 0.0321277, -0.023, 0, 5.96046e-08 )
-mesh = SubResource( 12 )
-material = SubResource( 11 )
+mesh = ExtResource( 7 )
+material = ExtResource( 8 )
 
 [node name="CSGMesh2" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
 transform = Transform( 0, -0.0115339, -2.32831e-10, 0.0200798, -9.31323e-10, 0, -4.65661e-10, -2.32831e-10, 0.0321277, 0.023, -2.98023e-08, 0 )
-mesh = SubResource( 12 )
-material = SubResource( 11 )
+mesh = ExtResource( 7 )
+material = ExtResource( 8 )
 
 [node name="RemoteTransform" type="RemoteTransform" parent="Camera/Subscreen"]
 remote_path = NodePath("../Viewport/SubCamera")

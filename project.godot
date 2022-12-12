@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "StaticBody",
+"class": "DemonHurtbox",
+"language": "GDScript",
+"path": "res://gameobjects/enemies/DemonHurtbox.gd"
+}, {
+"base": "Node",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://gameobjects/enemies/enemy.gd"
+}, {
 "base": "Control",
 "class": "GameRoot",
 "language": "GDScript",
@@ -25,6 +35,8 @@ _global_script_classes=[ {
 "path": "res://gameobjects/player_character.gd"
 } ]
 _global_script_class_icons={
+"DemonHurtbox": "",
+"Enemy": "",
 "GameRoot": "",
 "PauseRoot": "",
 "PlayerMovement": ""
@@ -50,6 +62,7 @@ window/stretch/aspect="keep"
 [global]
 
 env=false
+tag=false
 
 [gui]
 
