@@ -44,7 +44,8 @@ emission_operator = 0
 emission_on_uv2 = false
 emission_texture = SubResource( 9 )
 
-[node name="PlayerMovement" type="KinematicBody"]
+[node name="PlayerMovement" type="KinematicBody" groups=["listen_for_stage_complete"]]
+collision_layer = 5
 script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]

@@ -21,6 +21,11 @@ var move_speed: Vector3 = Vector3.ZERO
 
 var mouse_move_accumulation: Vector2 = Vector2.ZERO
 
+var prevent_movement = false
+
+func player_finished_stage():
+	prevent_movement = true
+
 # This is used for mouselook 
 func _input(event):
 	if (not event is InputEventMouseMotion):
@@ -72,7 +77,8 @@ func _physics_process(_delta):
 	if (is_on_floor() and Input.is_action_pressed("jump")):
 		verticalMovement.y = 10.0
 	
-	move_speed = move_and_slide(playerMovement + verticalMovement, Vector3.UP)
+	if not prevent_movement:
+		move_speed = move_and_slide(playerMovement + verticalMovement, Vector3.UP)
 
 func _ready():
 	move_speed = Vector3.ZERO

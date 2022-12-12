@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "Curtains",
+"language": "GDScript",
+"path": "res://etc/curtains.gd"
+}, {
 "base": "StaticBody",
 "class": "DemonHurtbox",
 "language": "GDScript",
@@ -24,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://etc/game_root.gd"
 }, {
+"base": "Area",
+"class": "LevelWinZone",
+"language": "GDScript",
+"path": "res://gameobjects/LevelWinZone.gd"
+}, {
 "base": "Control",
 "class": "PauseRoot",
 "language": "GDScript",
@@ -35,9 +45,11 @@ _global_script_classes=[ {
 "path": "res://gameobjects/player_character.gd"
 } ]
 _global_script_class_icons={
+"Curtains": "",
 "DemonHurtbox": "",
 "Enemy": "",
 "GameRoot": "",
+"LevelWinZone": "",
 "PauseRoot": "",
 "PlayerMovement": ""
 }

@@ -1,7 +1,7 @@
 class_name GameRoot extends Control
 
 onready var pause_root :PauseRoot = $pause_root
-
+onready var curtains: Curtains = $curtains
 
 onready var gameplay_viewport: Viewport = $ViewportContainer/Viewport
 
@@ -15,8 +15,26 @@ var stages = [
 	}
 ]
 
+func player_finished_stage():
+	on_player_completed_stage()
+
 func on_player_completed_stage():
-	pass
+	curtains.close_curtains()
+	
+	yield(curtains, "finished_closing")
+	
+	yield(get_tree().create_timer(0.7), "timeout")
+#
+	current_stage = current_stage + 1
+	teardown_stage()
+	start_stage(current_stage)
+	
+	curtains.open_curtains()
+#
+	yield(curtains, "finished_opening")
+
+	
+	
 	
 func teardown_stage():
 	for child in gameplay_viewport.get_children():
@@ -53,9 +71,10 @@ func _ready():
 	pause_root.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
+	
 	current_stage = 0
 	start_stage(current_stage)
-	teardown_stage()
+	curtains.open_curtains()
 	
 	var _pause_connect_result = pause_root.connect("done_exiting", self, "on_decorators_done")
 

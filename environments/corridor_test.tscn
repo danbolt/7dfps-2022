@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=1]
 [ext_resource path="res://graybox/GrayboxCube.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameobjects/LevelWinZone.tscn" type="PackedScene" id=3]
 
 [node name="corridor_test" type="Spatial"]
+
+[node name="LevelWinZone" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.79002, -18.6744 )
 
 [node name="PlayerMovement" parent="." instance=ExtResource( 1 )]
 
