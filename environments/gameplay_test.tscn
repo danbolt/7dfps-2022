@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://gameobjects/enemies/enemy.gd" type="Script" id=1]
+[ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameobjects/enemies/DemonSphereHurtbox.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.784314, 0.219608, 0.219608, 1 )
+
+[node name="gameplay" type="Spatial"]
+pause_mode = 1
+
+[node name="PlayerMovement" parent="." instance=ExtResource( 2 )]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 10.178, 0, 0, 0, 1, 0, 0, 0, 10.178, 0, -2.57865, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+mesh = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 3 )
+
+[node name="TestDemon" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44162, 0, -4.88421 )
+script = ExtResource( 1 )
+
+[node name="DemonSphereHurtbox" parent="TestDemon" instance=ExtResource( 3 )]
+
+[node name="MeshInstance" type="MeshInstance" parent="TestDemon"]
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="TestDemon2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4.45613 )
+script = ExtResource( 1 )
+
+[node name="DemonSphereHurtbox" parent="TestDemon2" instance=ExtResource( 3 )]
+
+[node name="MeshInstance" type="MeshInstance" parent="TestDemon2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.364747, 0, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 4 )
