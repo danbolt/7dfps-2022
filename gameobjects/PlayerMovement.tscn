@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://gameobjects/player_character.gd" type="Script" id=1]
 [ext_resource path="res://shapes/player_collision_shape.tres" type="Shape" id=2]
 [ext_resource path="res://hud_elements/app_screens/enemy_dms.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gameobjects/player_apps.gd" type="Script" id=4]
+[ext_resource path="res://fonts/pt_mono/pt_mono_app_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://fonts/tex_gyre_heros/tex_gyre_logotype.tres" type="DynamicFont" id=6]
 
 [sub_resource type="QuadMesh" id=4]
 
@@ -21,6 +23,15 @@ emission_energy = 0.5
 emission_operator = 0
 emission_on_uv2 = false
 emission_texture = SubResource( 6 )
+
+[sub_resource type="PrismMesh" id=12]
+size = Vector3( 2, 2, 0.01 )
+
+[sub_resource type="SpatialMaterial" id=11]
+render_priority = 1
+flags_unshaded = true
+flags_no_depth_test = true
+albedo_color = Color( 0.996078, 0.870588, 0.498039, 1 )
 
 [sub_resource type="QuadMesh" id=7]
 
@@ -59,10 +70,87 @@ render_target_update_mode = 3
 transform = Transform( 0.472845, 0.398434, -0.0958452, 0.0305335, 0.140304, 0.488809, 0.438962, -0.438948, 0.0692428, 0.392, -0.372, 0.03 )
 
 [node name="CameraScreen" type="MeshInstance" parent="Camera/Subscreen"]
-transform = Transform( 1, 0, 0, 0, 1.777, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, -5.96046e-08, 0, 0, 1.777, -7.45058e-09, -7.45058e-09, -1.49012e-08, 1, 0, 0, 0 )
 mesh = SubResource( 4 )
 skeleton = NodePath("../../..")
 material/0 = SubResource( 5 )
+
+[node name="TargetInfoText" type="Label3D" parent="Camera/Subscreen/CameraScreen"]
+transform = Transform( 0.059, -1.61656e-23, 3.67889e-09, 0, 0.027, 6.66609e-16, -3.39148e-09, -2.81225e-16, 0.064, -0.39, 0.418, 0 )
+double_sided = false
+no_depth_test = true
+alpha_scissor_threshold = 0.27
+render_priority = 1
+modulate = Color( 0.996078, 0.870588, 0.498039, 1 )
+text = "(scanning) "
+font = ExtResource( 5 )
+horizontal_alignment = 0
+
+[node name="TargetDataText" type="Label3D" parent="Camera/Subscreen/CameraScreen"]
+transform = Transform( 0.059, -1.61656e-23, 3.67889e-09, 0, 0.027, 6.66609e-16, -3.39148e-09, -2.81225e-16, 0.064, -0.39, 0.418, 0 )
+double_sided = false
+no_depth_test = true
+alpha_scissor_threshold = 0.27
+render_priority = 1
+modulate = Color( 0.996078, 0.752941, 0.498039, 1 )
+text = "check!"
+font = ExtResource( 5 )
+horizontal_alignment = 0
+
+[node name="NoTargetText" type="Label3D" parent="Camera/Subscreen/CameraScreen"]
+transform = Transform( 0.059, -1.61656e-23, 3.67889e-09, 0, 0.027, 6.66609e-16, -3.39148e-09, -2.81225e-16, 0.064, -0.39, 0.412, 0 )
+double_sided = false
+no_depth_test = true
+alpha_scissor_threshold = 0.27
+render_priority = 1
+modulate = Color( 0.996078, 0.870588, 0.498039, 1 )
+text = "no
+demonic
+entity"
+font = ExtResource( 6 )
+horizontal_alignment = 0
+vertical_alignment = 0
+uppercase = true
+line_spacing = -100.0
+
+[node name="TargetLocatedText" type="Label3D" parent="Camera/Subscreen/CameraScreen"]
+transform = Transform( 0.059, -1.61656e-23, 3.67889e-09, 0, 0.027, 6.66609e-16, -3.39148e-09, -2.81225e-16, 0.064, -0.39, 0.412, 0 )
+double_sided = false
+no_depth_test = true
+alpha_scissor_threshold = 0.27
+render_priority = 1
+modulate = Color( 0.996078, 0.752941, 0.498039, 1 )
+text = "demonic
+entity
+identified"
+font = ExtResource( 6 )
+horizontal_alignment = 0
+vertical_alignment = 0
+uppercase = true
+line_spacing = -100.0
+
+[node name="Spatial" type="Spatial" parent="Camera/Subscreen/CameraScreen"]
+transform = Transform( 7.54979e-08, -1, 8.88178e-16, 1, 7.54979e-08, -1.49012e-08, 1.49012e-08, 2.01318e-15, 1, 0, 0, 0 )
+
+[node name="CSGMesh3" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
+transform = Transform( 0.012, -9.31323e-09, 8.14907e-10, 1.86265e-09, 0.02, 4.19095e-09, -6.98492e-10, -2.09548e-09, 0.0321277, -0.000269532, -0.0341689, 0.000312805 )
+mesh = SubResource( 12 )
+material = SubResource( 11 )
+
+[node name="CSGMesh4" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
+transform = Transform( -0.012, 7.91624e-09, -3.37604e-09, -1.86265e-09, -0.02, 2.09548e-09, 2.32831e-10, -4.65661e-10, 0.0321277, 0.000211522, 0.0352985, -0.000674605 )
+mesh = SubResource( 12 )
+material = SubResource( 11 )
+
+[node name="CSGMesh" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
+transform = Transform( 9.31323e-10, 0.0115339, 4.65661e-10, -0.0200798, 0, -2.32831e-09, -2.09548e-09, -1.39698e-09, 0.0321277, -0.023, 0, 5.96046e-08 )
+mesh = SubResource( 12 )
+material = SubResource( 11 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="Camera/Subscreen/CameraScreen/Spatial"]
+transform = Transform( 0, -0.0115339, -2.32831e-10, 0.0200798, -9.31323e-10, 0, -4.65661e-10, -2.32831e-10, 0.0321277, 0.023, -2.98023e-08, 0 )
+mesh = SubResource( 12 )
+material = SubResource( 11 )
 
 [node name="RemoteTransform" type="RemoteTransform" parent="Camera/Subscreen"]
 remote_path = NodePath("../Viewport/SubCamera")
