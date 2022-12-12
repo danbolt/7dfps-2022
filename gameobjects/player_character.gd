@@ -4,6 +4,8 @@ onready var camera = $Camera
 
 onready var subscreen: Spatial = $Camera/Subscreen
 
+onready var hurtbox: Area = $Hurtbox
+
 const held_up_transform = Transform(Vector3(0.978, 0.21, 0.0), Vector3(-0.21, 0.978, 0.0), Vector3(0, 0, 1), Vector3(0.207, -0.24, -1.256))
 const held_down_transform = Transform(Vector3(0.473, 0.031, 0.439), Vector3(0.398, 0.14, -0.439), Vector3(-0.096, 0.489, 0.069), Vector3(0.392, -0.372, 0.03))
 var subscreen_held_state: float = 0.0
@@ -23,7 +25,18 @@ var mouse_move_accumulation: Vector2 = Vector2.ZERO
 
 var prevent_movement = false
 
+func on_touched_hazard(_node):
+	if (prevent_movement):
+		return
+		
+	get_tree().call_group("listen_for_player_death", "player_died")
+	prevent_movement = true
+	
+
 func player_finished_stage():
+	if (prevent_movement):
+		return
+		
 	prevent_movement = true
 
 # This is used for mouselook 
@@ -87,4 +100,7 @@ func _ready():
 	
 	subscreen_held_state = 0.0
 	subscreen_zoom_fov = 0.0
+	
+	var touched_hazard_connect_result = hurtbox.connect("body_entered", self, "on_touched_hazard")
+	assert(touched_hazard_connect_result == OK)
 	

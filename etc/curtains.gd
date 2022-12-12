@@ -12,7 +12,7 @@ onready var right_curtain: ColorRect = $right_curtain
 signal finished_closing()
 signal finished_opening()
 
-var is_moving = false
+export var is_moving = false
 
 func open_curtains():
 	assert(!is_moving)

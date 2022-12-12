@@ -17,6 +17,23 @@ var stages = [
 
 func player_finished_stage():
 	on_player_completed_stage()
+	
+func player_died():
+	on_player_died()
+	
+func on_player_died():
+	curtains.close_curtains()
+	
+	yield(curtains, "finished_closing")
+	
+	yield(get_tree().create_timer(0.7), "timeout")
+
+	teardown_stage()
+	start_stage(current_stage)
+	
+	curtains.open_curtains()
+#
+	yield(curtains, "finished_opening")
 
 func on_player_completed_stage():
 	curtains.close_curtains()
@@ -61,6 +78,9 @@ func on_decorators_done():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 func handle_pause_press():
+	if (curtains.is_moving):
+		return
+	
 	if !(get_tree().paused):
 		pause_game()
 	elif (get_tree().paused):

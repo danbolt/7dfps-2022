@@ -171,6 +171,7 @@ fire={
 3d_physics/layer_1="Physical World"
 3d_physics/layer_2="Demon Hitboxes"
 3d_physics/layer_3="Player Hitboxes"
+3d_physics/layer_4="Player-Killing Bodies"
 
 [physics]
 
