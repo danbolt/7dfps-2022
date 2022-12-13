@@ -63,7 +63,7 @@ func _physics_process(_delta):
 	var turnVector = Vector2(Input.get_axis("turn_left", "turn_right"), Input.get_axis("turn_down", "turn_up"))
 	
 	if (subscreen_held_state > 0.1):
-		turnVector *= 0.25
+		turnVector *= 0.45
 	
 	# Turn the camera
 	camera.global_rotate(Vector3.UP, turnVector.x * -1.0 * (turn_speed + x_sensitivity_modifier))
