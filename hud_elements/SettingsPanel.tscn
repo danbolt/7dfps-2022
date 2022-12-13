@@ -3,7 +3,8 @@
 [ext_resource path="res://hud_elements/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://hud_elements/SettingsPanel.gd" type="Script" id=2]
 
-[node name="SettingsPanel" type="MarginContainer"]
+[node name="SettingsPanel" type="Panel"]
+pause_mode = 2
 margin_right = 436.0
 margin_bottom = 172.0
 theme = ExtResource( 1 )

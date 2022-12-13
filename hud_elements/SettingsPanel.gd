@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Panel
 
 onready var y_invert_toggle: CheckButton = $VBoxContainer/YInvert
 

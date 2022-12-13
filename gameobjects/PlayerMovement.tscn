@@ -63,6 +63,7 @@ sharpen_intensity = 0.095
 hdr = false
 render_target_v_flip = true
 render_target_update_mode = 3
+gui_disable_input = true
 
 [node name="SubCamera" type="Camera" parent="Camera/Subscreen/Viewport"]
 transform = Transform( 0.472845, 0.398434, -0.0958452, 0.0305335, 0.140304, 0.488809, 0.438962, -0.438948, 0.0692428, 0.392, -0.372, 0.03 )
@@ -249,6 +250,7 @@ own_world = true
 hdr = false
 usage = 1
 render_target_v_flip = true
+gui_disable_input = true
 
 [node name="Camera" type="Camera" parent="Camera/Subscreen/Viewport2"]
 projection = 1

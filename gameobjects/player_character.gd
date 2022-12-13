@@ -62,6 +62,9 @@ func _physics_process(_delta):
 	var moveVector = Vector2(Input.get_axis("step_left", "step_right"), Input.get_axis("step_backward", "step_forward"))
 	var turnVector = Vector2(Input.get_axis("turn_left", "turn_right"), Input.get_axis("turn_down", "turn_up"))
 	
+	if (subscreen_held_state > 0.1):
+		turnVector *= 0.25
+	
 	# Turn the camera
 	camera.global_rotate(Vector3.UP, turnVector.x * -1.0 * (turn_speed + x_sensitivity_modifier))
 	camera.global_rotate(camera.transform.basis.x, turnVector.y * (turn_speed + y_sensitivity_modifier) * (-1.0 if y_invert else 1.0 ))
@@ -69,6 +72,8 @@ func _physics_process(_delta):
 	# Mouselook for camera turning
 	if (not mouse_move_accumulation.is_equal_approx(Vector2.ZERO)):
 		var converted_movement = Vector2(deg2rad(mouse_move_accumulation.x), deg2rad(mouse_move_accumulation.y))
+		if (subscreen_held_state > 0.1):
+			converted_movement *= 0.25
 		camera.global_rotate(Vector3.UP, converted_movement.x * -1.0 * (turn_speed + x_sensitivity_modifier))
 		camera.global_rotate(camera.transform.basis.x, converted_movement.y * (turn_speed + y_sensitivity_modifier) * (1.0 if y_invert else -1.0))
 		mouse_move_accumulation = Vector2.ZERO
@@ -83,6 +88,9 @@ func _physics_process(_delta):
 	stepDirection.y = 0.0
 	stepDirection = stepDirection.normalized()
 	var playerMovement = stepDirection * movement_speed
+	
+	if (subscreen_held_state > 0.1):
+		playerMovement *= 0.5
 	
 	var gravityValue = (Vector3.DOWN * 0.3) if not is_on_floor() else Vector3.ZERO
 	var verticalMovement = Vector3(0.0, move_speed.y, 0.0)

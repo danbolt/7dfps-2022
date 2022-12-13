@@ -55,7 +55,7 @@ stretch_mode = 2
 flip_h = true
 
 [node name="SettingsPanel" parent="." instance=ExtResource( 4 )]
-margin_left = 1420.0
-margin_top = 857.0
-margin_right = 1856.0
-margin_bottom = 1029.0
+margin_left = 1324.0
+margin_top = 676.0
+margin_right = 1760.0
+margin_bottom = 848.0
