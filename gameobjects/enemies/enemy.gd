@@ -2,6 +2,7 @@ class_name Enemy extends KinematicBody
 
 signal been_struck(hurtbox)
 
+# warning-ignore:unused_signal
 signal died()
 
 func on_died():
