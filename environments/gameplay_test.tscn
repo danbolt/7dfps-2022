@@ -63,7 +63,7 @@ environment = SubResource( 5 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5648, 7.67126, -13.2052 )
-light_color = Color( 0.729412, 0.666667, 0.364706, 1 )
+light_color = Color( 0.729412, 0.392157, 0.364706, 1 )
 light_energy = 0.758
 light_specular = 3.288
 omni_range = 16.555
@@ -72,7 +72,7 @@ flicker_magnitude = 0.5
 
 [node name="OmniLight2" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4352, 7.67126, -13.2052 )
-light_color = Color( 0.729412, 0.666667, 0.364706, 1 )
+light_color = Color( 0.729412, 0.392157, 0.364706, 1 )
 light_energy = 0.758
 light_specular = 3.288
 omni_range = 16.555

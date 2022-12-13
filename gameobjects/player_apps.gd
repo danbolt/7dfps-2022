@@ -8,6 +8,7 @@ onready var target_data_text = $CameraScreen/TargetDataText
 
 onready var no_target_text = $CameraScreen/NoTargetText
 onready var target_found_text = $CameraScreen/TargetLocatedText
+onready var divine_strike_text = $CameraScreen/DivineStrikeText
 
 onready var bar_fill_percentage: float = 0.0
 onready var current_hurtbox: DemonHurtbox = null
@@ -37,6 +38,8 @@ func _ready():
 	
 	progress_bar_backing.visible = false
 	progress_bar.visible =false
+	
+	divine_strike_text.visible = false
 	
 	bar_fill_percentage = 0.0
 	current_hurtbox = null
@@ -79,10 +82,16 @@ func _physics_process(delta):
 			
 			divine_strike_anim.global_translation = current_hurtbox.global_translation
 			divine_strike_anim.look_at(global_translation, Vector3.UP)
+			
+			divine_strike_text.visible = true
+			get_tree().create_timer(0.7, false).connect("timeout", self, "on_divine_strike_timeout_done")
 	elif current_hurtbox != null and (not Input.is_action_pressed("fire")):
 		bar_fill_percentage -= delta * 0.811
 		bar_fill_percentage = max(0.0, bar_fill_percentage)
 	
+	
+func on_divine_strike_timeout_done():
+	divine_strike_text.visible = false
 	
 func _process(_delta):
 	if Input.is_action_just_released("next_app") or Input.is_action_just_released("prev_app"):
@@ -98,9 +107,10 @@ func _process(_delta):
 		progress_bar.visible = true
 	else:
 		target_found_text.visible = false
-		no_target_text.visible = true
-		target_info_text.visible = true
 		target_data_text.visible = false
+		if not divine_strike_text.visible:
+			no_target_text.visible = true
+			target_info_text.visible = true
 		
 		progress_bar_backing.visible = false
 		progress_bar.visible =false

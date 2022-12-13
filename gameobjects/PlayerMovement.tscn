@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://gameobjects/player_character.gd" type="Script" id=1]
 [ext_resource path="res://shapes/player_collision_shape.tres" type="Shape" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://hud_elements/shapes/triangle_mat.tres" type="Material" id=8]
 [ext_resource path="res://hud_elements/shapes/plane.tres" type="PlaneMesh" id=9]
 [ext_resource path="res://hud_elements/shapes/triangle_mat_darker.tres" type="Material" id=10]
+[ext_resource path="res://gameobjects/phone_material.tres" type="Material" id=11]
+
+[sub_resource type="CubeMesh" id=11]
 
 [sub_resource type="QuadMesh" id=4]
 
@@ -56,6 +59,11 @@ script = ExtResource( 1 )
 transform = Transform( 0.472845, 0.398434, -0.0958452, 0.0305335, 0.140304, 0.488809, 0.438962, -0.438948, 0.0692428, 0.392, -0.372, 0.03 )
 script = ExtResource( 4 )
 
+[node name="PhoneBody" type="MeshInstance" parent="Camera/Subscreen"]
+transform = Transform( 0.538874, -3.8743e-07, 5.3551e-09, 2.98023e-08, 0.942116, -2.79397e-09, -1.2666e-07, 8.9407e-08, 0.0492426, 5.96046e-08, 0.021822, -0.0383346 )
+mesh = SubResource( 11 )
+material/0 = ExtResource( 11 )
+
 [node name="Viewport" type="Viewport" parent="Camera/Subscreen"]
 size = Vector2( 240, 426 )
 handle_input_locally = false
@@ -97,7 +105,7 @@ font = ExtResource( 5 )
 horizontal_alignment = 0
 
 [node name="NoTargetText" type="Label3D" parent="Camera/Subscreen/CameraScreen"]
-transform = Transform( 0.059, -1.61656e-23, 3.67889e-09, 0, 0.027, 6.66609e-16, -3.39148e-09, -2.81225e-16, 0.064, -0.39, 0.412, 0 )
+transform = Transform( 0.059, -1.86265e-09, 4.19095e-09, 1.86265e-09, 0.027, 4.65661e-10, -2.79397e-09, -4.65661e-10, 0.064, -0.39, 0.412, -5.96046e-08 )
 double_sided = false
 no_depth_test = true
 alpha_scissor_threshold = 0.27
@@ -106,6 +114,21 @@ modulate = Color( 0.996078, 0.870588, 0.498039, 1 )
 text = "no
 demonic
 entity"
+font = ExtResource( 6 )
+horizontal_alignment = 0
+vertical_alignment = 0
+uppercase = true
+line_spacing = -100.0
+
+[node name="DivineStrikeText" type="Label3D" parent="Camera/Subscreen/CameraScreen"]
+transform = Transform( 0.059, -1.86265e-09, 4.19095e-09, 1.86265e-09, 0.027, 4.65661e-10, -2.79397e-09, -4.65661e-10, 0.064, -0.39, 0.412, -5.96046e-08 )
+double_sided = false
+no_depth_test = true
+alpha_scissor_threshold = 0.27
+render_priority = 1
+modulate = Color( 0.917647, 0.0352941, 0.0352941, 1 )
+text = "divine
+strike"
 font = ExtResource( 6 )
 horizontal_alignment = 0
 vertical_alignment = 0

@@ -1,7 +1,51 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://models/divine_strike.glb" type="PackedScene" id=1]
 [ext_resource path="res://models/divine_strike.gd" type="Script" id=2]
+[ext_resource path="res://gameobjects/omni_light_flicker.gd" type="Script" id=3]
+[ext_resource path="res://models/Material.material" type="Material" id=4]
+
+[sub_resource type="Curve" id=2]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, -7.27271 ), 0.0, -493.0, 0, 0, Vector2( 1, -90.9091 ), 117.77, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.12
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 33.15
+initial_velocity_random = 0.4
+angular_velocity = 720.0
+angular_velocity_random = 0.96
+linear_accel = -26.36
+linear_accel_curve = SubResource( 3 )
+radial_accel = 3.1
+radial_accel_random = 0.12
+damping = 30.62
+angle = 307.0
+angle_random = 0.55
+
+[sub_resource type="PlaneMesh" id=4]
+size = Vector2( 0.2, 0.25 )
 
 [node name="divine_strike" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="Particles" type="Particles" parent="divine_blade_armature" index="1"]
+material_override = ExtResource( 4 )
+amount = 46
+lifetime = 7.61
+explosiveness = 1.0
+visibility_aabb = AABB( -4.06139, -4, -4, 8.12278, 8, 8 )
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="OmniLightFlicker" type="OmniLight" parent="divine_blade_armature" index="2"]
+light_color = Color( 1, 0.960784, 0.0823529, 1 )
+script = ExtResource( 3 )
+flicker_magnitude = 2.0
