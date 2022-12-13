@@ -1,7 +1,21 @@
-[gd_resource type="SpatialMaterial" format=2]
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 518181
+octaves = 2
+lacunarity = 1.89
+
+[sub_resource type="NoiseTexture" id=2]
+width = 10
+seamless = true
+noise = SubResource( 1 )
 
 [resource]
 albedo_color = Color( 0.129412, 0.12549, 0.12549, 1 )
 metallic = 0.4
 metallic_specular = 0.09
 roughness = 0.01
+clearcoat_enabled = true
+clearcoat = 0.95
+clearcoat_gloss = 0.51
+clearcoat_texture = SubResource( 2 )

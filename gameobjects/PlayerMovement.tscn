@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://gameobjects/player_character.gd" type="Script" id=1]
 [ext_resource path="res://shapes/player_collision_shape.tres" type="Shape" id=2]
@@ -11,8 +11,32 @@
 [ext_resource path="res://hud_elements/shapes/plane.tres" type="PlaneMesh" id=9]
 [ext_resource path="res://hud_elements/shapes/triangle_mat_darker.tres" type="Material" id=10]
 [ext_resource path="res://gameobjects/phone_material.tres" type="Material" id=11]
+[ext_resource path="res://gameobjects/omni_light_flicker.gd" type="Script" id=12]
 
 [sub_resource type="CubeMesh" id=11]
+subdivide_width = 5
+subdivide_height = 5
+subdivide_depth = 5
+
+[sub_resource type="SphereMesh" id=12]
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0.188235, 0.145098, 0.301961, 1 )
+metallic = 0.7
+metallic_specular = 0.95
+roughness = 0.0
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0.431373, 0.25098, 0.25098, 1 )
+roughness = 0.14
+emission_enabled = true
+emission = Color( 1, 0.164706, 0, 1 )
+emission_energy = 0.75
+emission_operator = 0
+emission_on_uv2 = false
+rim_enabled = true
+rim = 0.77
+rim_tint = 0.84
 
 [sub_resource type="QuadMesh" id=4]
 
@@ -60,9 +84,29 @@ transform = Transform( 0.472845, 0.398434, -0.0958452, 0.0305335, 0.140304, 0.48
 script = ExtResource( 4 )
 
 [node name="PhoneBody" type="MeshInstance" parent="Camera/Subscreen"]
-transform = Transform( 0.538874, -3.8743e-07, 5.3551e-09, 2.98023e-08, 0.942116, -2.79397e-09, -1.2666e-07, 8.9407e-08, 0.0492426, 5.96046e-08, 0.021822, -0.0383346 )
+transform = Transform( 0.538874, -4.47035e-07, 5.3551e-09, 2.98023e-08, 0.942116, -2.79397e-09, -1.2666e-07, 9.68575e-08, 0.0492426, 8.9407e-08, 0.021822, -0.0383346 )
 mesh = SubResource( 11 )
 material/0 = ExtResource( 11 )
+
+[node name="OffLight" type="MeshInstance" parent="Camera/Subscreen/PhoneBody"]
+transform = Transform( 0.0794413, -2.6077e-08, -2.84053e-07, -4.65661e-08, 0.0471488, -1.71876e-06, -2.98023e-08, 2.38419e-07, 1.04906, -0.8509, 0.965382, 0.114557 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="Onlight" type="MeshInstance" parent="Camera/Subscreen/PhoneBody"]
+transform = Transform( 0.0794413, -2.6077e-08, -2.84053e-07, -4.65661e-08, 0.0471488, -1.71876e-06, -2.98023e-08, 2.38419e-07, 1.04906, -0.8509, 0.965382, 0.114557 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 14 )
+
+[node name="OmniLightFlicker" type="OmniLight" parent="Camera/Subscreen/PhoneBody/Onlight"]
+transform = Transform( 36.1654, 6.29425e-05, 0.000131845, 0, 36.9551, 0.00140643, 1.66893e-06, 2.38419e-06, 38.4922, 7.62939e-06, 6.86646e-05, 1.66825 )
+light_color = Color( 0.901961, 0.74902, 0.0431373, 1 )
+light_energy = 12.248
+light_indirect_energy = 13.0
+omni_range = 0.345
+script = ExtResource( 12 )
+base_energy = 12.0
+flicker_magnitude = 2.0
 
 [node name="Viewport" type="Viewport" parent="Camera/Subscreen"]
 size = Vector2( 240, 426 )
@@ -77,7 +121,7 @@ gui_disable_input = true
 transform = Transform( 0.472845, 0.398434, -0.0958452, 0.0305335, 0.140304, 0.488809, 0.438962, -0.438948, 0.0692428, 0.392, -0.372, 0.03 )
 
 [node name="CameraScreen" type="MeshInstance" parent="Camera/Subscreen"]
-transform = Transform( 1, -5.96046e-08, 0, 0, 1.777, -7.45058e-09, -7.45058e-09, -1.49012e-08, 1, 0, 0, 0 )
+transform = Transform( 1, -5.96046e-08, 0, 0, 1.777, -7.45058e-09, -2.23517e-08, -1.49012e-08, 1, 0, 0, 0 )
 mesh = SubResource( 4 )
 skeleton = NodePath("../../..")
 material/0 = SubResource( 5 )
@@ -92,6 +136,17 @@ modulate = Color( 0.996078, 0.870588, 0.498039, 1 )
 text = "(scanning) "
 font = ExtResource( 5 )
 horizontal_alignment = 0
+
+[node name="TargetInfoText2" type="Label3D" parent="Camera/Subscreen/CameraScreen"]
+transform = Transform( 0.0589999, -9.31323e-09, 1.16415e-08, 1.67638e-08, 0.027, 2.79397e-09, 1.44355e-08, -3.72529e-09, 0.0639999, 0.0230633, 0.466823, 1.19209e-07 )
+double_sided = false
+no_depth_test = true
+alpha_scissor_threshold = 0.27
+render_priority = 1
+modulate = Color( 0.996078, 0.870588, 0.498039, 1 )
+text = "HELSING v0.16"
+font = ExtResource( 5 )
+line_spacing = 0.011
 
 [node name="TargetDataText" type="Label3D" parent="Camera/Subscreen/CameraScreen"]
 transform = Transform( 0.059, -1.61656e-23, 3.67889e-09, 0, 0.027, 6.66609e-16, -3.39148e-09, -2.81225e-16, 0.064, -0.39, 0.418, 0 )

@@ -17,6 +17,9 @@ onready var progress_bar_backing = $CameraScreen/ProgressbarBacking
 onready var progress_bar: Spatial = $CameraScreen/ProgressBar
 onready var crosshairs: Spatial = $CameraScreen/Crosshairs
 
+onready var offlight: Spatial = $PhoneBody/OffLight
+onready var onlight: Spatial = $PhoneBody/Onlight
+
 onready var divine_strike_prefab = preload("res://models/divine_strike.tscn")
 
 func process_next_app():
@@ -40,6 +43,8 @@ func _ready():
 	progress_bar.visible =false
 	
 	divine_strike_text.visible = false
+	
+	onlight.visible = false
 	
 	bar_fill_percentage = 0.0
 	current_hurtbox = null
@@ -80,11 +85,13 @@ func _physics_process(delta):
 			# HACK: add this a better way
 			get_parent().get_parent().get_parent().add_child(divine_strike_anim)
 			
+			onlight.visible = true
+			
 			divine_strike_anim.global_translation = current_hurtbox.global_translation
 			divine_strike_anim.look_at(global_translation, Vector3.UP)
 			
 			divine_strike_text.visible = true
-			get_tree().create_timer(0.7, false).connect("timeout", self, "on_divine_strike_timeout_done")
+			var _timeout_connect_val = get_tree().create_timer(0.7, false).connect("timeout", self, "on_divine_strike_timeout_done")
 	elif current_hurtbox != null and (not Input.is_action_pressed("fire")):
 		bar_fill_percentage -= delta * 0.811
 		bar_fill_percentage = max(0.0, bar_fill_percentage)
@@ -92,6 +99,7 @@ func _physics_process(delta):
 	
 func on_divine_strike_timeout_done():
 	divine_strike_text.visible = false
+	onlight.visible = false
 	
 func _process(_delta):
 	if Input.is_action_just_released("next_app") or Input.is_action_just_released("prev_app"):
@@ -114,6 +122,8 @@ func _process(_delta):
 		
 		progress_bar_backing.visible = false
 		progress_bar.visible =false
+		
+	offlight.visible = !onlight.visible
 		
 	var inv_bar_fill = 1.0 - bar_fill_percentage
 	var inv_cubic_bar_fill_percentage = (1.0 - (inv_bar_fill * inv_bar_fill * inv_bar_fill))
