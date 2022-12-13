@@ -16,6 +16,8 @@ onready var progress_bar_backing = $CameraScreen/ProgressbarBacking
 onready var progress_bar: Spatial = $CameraScreen/ProgressBar
 onready var crosshairs: Spatial = $CameraScreen/Crosshairs
 
+onready var divine_strike_prefab = preload("res://models/divine_strike.tscn")
+
 func process_next_app():
 	if camera_screen.visible:
 		camera_screen.visible = false
@@ -69,6 +71,13 @@ func _physics_process(delta):
 		
 		if (bar_fill_percentage >= 1.0):
 			current_hurtbox.strike()
+			
+			var divine_strike_anim = divine_strike_prefab.instance()
+			
+			# HACK: add this a better way
+			get_parent().get_parent().get_parent().add_child(divine_strike_anim)
+			divine_strike_anim.global_translation = current_hurtbox.global_translation
+			divine_strike_anim.look_at(global_translation, Vector3.UP)
 	elif current_hurtbox != null and (not Input.is_action_pressed("fire")):
 		bar_fill_percentage -= delta * 0.311
 		bar_fill_percentage = max(0.0, bar_fill_percentage)

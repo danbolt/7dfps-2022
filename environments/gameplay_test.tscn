@@ -34,6 +34,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.12783 )
 [node name="PathFlier" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -10.6818 )
 route_path = NodePath("../Paths/Path")
+fly_speed = 4.0
 
 [node name="Paths" type="Node" parent="."]
 

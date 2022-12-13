@@ -36,7 +36,8 @@ func _ready():
 	
 	var _connect_struck_result = connect("been_struck", self, "on_struck")
 
-
+func _process(_delta):
+	animation_player.playback_speed = fly_speed * 0.5
 
 func _physics_process(_delta):
 	if dying:

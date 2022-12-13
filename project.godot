@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://gameobjects/enemies/DemonHurtbox.gd"
 }, {
+"base": "Spatial",
+"class": "DivineStrike",
+"language": "GDScript",
+"path": "res://models/divine_strike.gd"
+}, {
 "base": "KinematicBody",
 "class": "Enemy",
 "language": "GDScript",
@@ -52,6 +57,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Curtains": "",
 "DemonHurtbox": "",
+"DivineStrike": "",
 "Enemy": "",
 "GameRoot": "",
 "LevelWinZone": "",
