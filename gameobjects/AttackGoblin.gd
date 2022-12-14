@@ -14,8 +14,8 @@ onready var navigation_agent: NavigationAgent = $NavigationAgent
 
 onready var animation_player: AnimationPlayer = $attack_goblin_base/AnimationPlayer
 
-const DOT_FOV_ANGLE = 0.55
-const DOT_FOV_ANGLE_SUSTAIN = 0.501
+const DOT_FOV_ANGLE = 0.501
+const DOT_FOV_ANGLE_SUSTAIN = 0.301
 
 const RUN_SPEED = 5.45
 
