@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
@@ -6,7 +6,12 @@
 [ext_resource path="res://gameobjects/LevelWinZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gameobjects/enemies/PathFlier.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameobjects/enemies/AttackGoblin.tscn" type="PackedScene" id=6]
-[ext_resource path="res://gameobjects/enemies/DumbDoor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gameobjects/phone_material.tres" type="Material" id=7]
+[ext_resource path="res://models/environment/elevator.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gameobjects/Elevator.gd" type="Script" id=9]
+[ext_resource path="res://sfx/elevator_ding.wav" type="AudioStream" id=10]
+[ext_resource path="res://sfx/elevator_doors.wav" type="AudioStream" id=11]
+[ext_resource path="res://static_bodies/BoxBody.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Curve3D" id=4]
 _data = {
@@ -40,6 +45,8 @@ polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 9, 
 agent_radius = 0.85
 agent_max_slope = 75.22
 edge_max_error = 1.4
+
+[sub_resource type="CubeMesh" id=8]
 
 [node name="gameplay" type="Spatial"]
 pause_mode = 1
@@ -84,6 +91,7 @@ script = ExtResource( 3 )
 flicker_magnitude = 0.5
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+visible = false
 navmesh = SubResource( 7 )
 
 [node name="GridMap" type="GridMap" parent="NavigationMeshInstance"]
@@ -99,5 +107,51 @@ __meta__ = {
 [node name="AttackGoblin" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.742116, 0, 0.670271, 0, 1, 0, -0.670271, 0, -0.742116, -8.65228, 4.24266, -9.07876 )
 
-[node name="DumbDoor" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.759563, 0 )
+[node name="Elevator" type="Spatial" parent="."]
+script = ExtResource( 9 )
+
+[node name="elevator" parent="Elevator" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0658407, 0 )
+
+[node name="LeftDoor" type="MeshInstance" parent="Elevator"]
+transform = Transform( 1.2, 0, 0, 0, 2.24382, 0, 0, 0, 0.0561455, -1.21292, 2.27159, 1.50145 )
+mesh = SubResource( 8 )
+material/0 = ExtResource( 7 )
+
+[node name="door_sound" type="AudioStreamPlayer3D" parent="Elevator/LeftDoor"]
+transform = Transform( 0.833333, 0, 0, 0, 0.445669, 0, 0, 0, 17.8109, 0, -0.964849, 0 )
+stream = ExtResource( 11 )
+bus = "Sound Effects"
+
+[node name="RightDoor" type="MeshInstance" parent="Elevator"]
+transform = Transform( 1.2, 0, 0, 0, 2.24382, 0, 0, 0, 0.0561455, 1.20021, 2.27159, 1.50145 )
+mesh = SubResource( 8 )
+material/0 = ExtResource( 7 )
+
+[node name="door_sound" type="AudioStreamPlayer3D" parent="Elevator/RightDoor"]
+transform = Transform( 0.833333, 0, 0, 0, 0.445669, 0, 0, 0, 17.8109, 0, -0.964849, 0 )
+stream = ExtResource( 11 )
+unit_db = -3.478
+unit_size = 0.2
+bus = "Sound Effects"
+
+[node name="ding_play" type="AudioStreamPlayer3D" parent="Elevator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19738, 1.79745 )
+stream = ExtResource( 10 )
+unit_db = 24.552
+unit_size = 0.5
+max_db = 3.454
+max_distance = 20.0
+bus = "Sound Effects"
+
+[node name="BoxBody" parent="Elevator" instance=ExtResource( 12 )]
+transform = Transform( 0.218785, 0, 0, 0, 2.09068, 0, 0, 0, 2.03524, 2.34315, 2.35672, 0 )
+
+[node name="BoxBody4" parent="Elevator" instance=ExtResource( 12 )]
+transform = Transform( -9.56339e-09, 0, 2.03524, -0.218785, -9.13866e-08, -8.89633e-08, 9.56339e-09, -2.09068, 3.88871e-15, 0, 4.88103, 0 )
+
+[node name="BoxBody2" parent="Elevator" instance=ExtResource( 12 )]
+transform = Transform( 0.218785, 0, 0, 0, 2.09068, 0, 0, 0, 2.03524, -2.343, 2.357, 0 )
+
+[node name="BoxBody3" parent="Elevator" instance=ExtResource( 12 )]
+transform = Transform( -9.56339e-09, 0, 2.03524, 0, 2.09068, 0, -0.218785, 0, -8.89633e-08, 0, 2.357, -1.76145 )

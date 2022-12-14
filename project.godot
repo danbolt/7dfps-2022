@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://gameobjects/enemies/dumb_door.gd"
 }, {
+"base": "Spatial",
+"class": "Elevator",
+"language": "GDScript",
+"path": "res://gameobjects/Elevator.gd"
+}, {
 "base": "KinematicBody",
 "class": "Enemy",
 "language": "GDScript",
@@ -75,6 +80,7 @@ _global_script_class_icons={
 "DemonHurtbox": "",
 "DivineStrike": "",
 "DumbDoor": "",
+"Elevator": "",
 "Enemy": "",
 "GameRoot": "",
 "LevelWinZone": "",
