@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://gameobjects/enemies/DemonHurtbox.gd" type="Script" id=1]
 [ext_resource path="res://static_bodies/BoxBody.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gameobjects/enemies/dumb_door.gd" type="Script" id=3]
 [ext_resource path="res://gameobjects/enemies/DemonSphereHurtbox.tscn" type="PackedScene" id=4]
@@ -10,13 +9,11 @@
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.698993, 0 )
 script = ExtResource( 3 )
 
-[node name="BoxBody" type="StaticBody" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1.80759, 0, 0, 0, 2.33582, 0, 0, 0, 0.403995, 0, 0.534147, 0 )
+[node name="BoxBody" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1.80759, 0, 0, 0, 2.33582, 0, 0, 0, 0.403995, 0, 0.803835, 0 )
 
-[node name="dumbdoor" type="Spatial" parent="." instance=ExtResource( 5 )]
+[node name="dumbdoor" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269688, 0 )
 
-[node name="DemonSphereHurtbox" type="StaticBody" parent="." groups=["demon_hurtbox"] instance=ExtResource( 4 )]
-transform = Transform( 3.35077, 0, 0, 0, 2.34255, 0, 0, 0, 1, 0, 0.61976, 0 )
-collision_layer = 2
-collision_mask = 0
-script = ExtResource( 1 )
+[node name="DemonSphereHurtbox" parent="." instance=ExtResource( 4 )]
+transform = Transform( 3.35077, 0, 0, 0, 2.34255, 0, 0, 0, 1, 0, 0.889448, 0 )

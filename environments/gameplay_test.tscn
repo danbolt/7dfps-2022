@@ -96,3 +96,4 @@ __meta__ = {
 transform = Transform( -0.742116, 0, 0.670271, 0, 1, 0, -0.670271, 0, -0.742116, -8.65228, 4.24266, -9.07876 )
 
 [node name="DumbDoor" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.759563, 0 )

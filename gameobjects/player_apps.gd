@@ -52,7 +52,7 @@ func _ready():
 func _physics_process(delta):
 	
 	var space_state = get_world().direct_space_state
-	var result = space_state.intersect_ray(global_translation, global_transform.basis.z * -100, [], 2)
+	var result = space_state.intersect_ray(global_translation + global_transform.basis.z * 2.5, global_transform.basis.z * -100, [], 2)
 	
 	if current_hurtbox == null and result and (result.collider is DemonHurtbox):
 		current_hurtbox = result.collider as DemonHurtbox
