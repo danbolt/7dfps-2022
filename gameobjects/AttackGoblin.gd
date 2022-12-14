@@ -12,19 +12,31 @@ var chase_repath_time: float = 0.0
 
 onready var navigation_agent: NavigationAgent = $NavigationAgent
 
+onready var animation_player: AnimationPlayer = $attack_goblin_base/AnimationPlayer
+
 const DOT_FOV_ANGLE = 0.75
 
-const RUN_SPEED = 2.0
+const RUN_SPEED = 5.3
+
+func on_animation_done(animation_name):
+	if (animation_name != "die"):
+		return
+		
+	yield(get_tree().create_timer(0.25), "timeout")
+	
+	emit_signal("died")
+	
 
 func on_struck(_hurtbox):
 	if dying:
 		return
 	
 	dying = true
-	
-	emit_signal("died")
-	
 	hurtbox.queue_free()
+	
+	animation_player.play("die")
+	
+	var _connect_to_anim_finish = animation_player.connect("animation_finished", self, "on_animation_done")
 	
 func has_los(check: Spatial) -> bool:
 	var space_state = get_world().direct_space_state
@@ -34,6 +46,15 @@ func has_los(check: Spatial) -> bool:
 		return false
 	
 	return true
+	
+func _process(_delta):
+	if dying:
+		return
+	
+	if not chasing:
+		animation_player.play("idle")
+	elif chasing and not animation_player.is_playing():
+		animation_player.play("run")
 
 func _physics_process(delta):
 	if dying:
@@ -51,6 +72,7 @@ func _physics_process(delta):
 				chasing_player = player
 				chase_repath_time = 0.0
 				navigation_agent.set_target_location(chasing_player.global_translation)
+				animation_player.play("alert")
 				break
 	else:
 		var directionToPlayer: Vector3 = ((chasing_player as Spatial).global_translation - global_translation).normalized()
@@ -61,7 +83,7 @@ func _physics_process(delta):
 		
 	
 	var moveDirection = Vector3.ZERO
-	if (chasing):
+	if (chasing and animation_player.current_animation != "alert"):
 		look_at(chasing_player.global_translation, Vector3.UP)
 		
 		if true:
