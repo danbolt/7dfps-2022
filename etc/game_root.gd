@@ -44,6 +44,7 @@ func on_player_completed_stage():
 #
 	current_stage = current_stage + 1
 	teardown_stage()
+	
 	start_stage(current_stage)
 	
 	curtains.open_curtains()
@@ -56,6 +57,8 @@ func on_player_completed_stage():
 func teardown_stage():
 	for child in gameplay_viewport.get_children():
 		child.queue_free()
+		# Manually remove the child from the tree so `WorldEnvironment`s don't conflict with one another
+		gameplay_viewport.remove_child(child)
 
 func start_stage(stageIndex: int):
 	var nextSceneToInstance: String = stages[stageIndex % stages.size()].scene

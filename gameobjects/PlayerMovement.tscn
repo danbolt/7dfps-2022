@@ -73,7 +73,7 @@ emission_texture = SubResource( 9 )
 
 [sub_resource type="SphereShape" id=10]
 
-[node name="PlayerMovement" type="KinematicBody" groups=["listen_for_stage_complete"]]
+[node name="PlayerMovement" type="KinematicBody" groups=["listen_for_stage_complete", "player_character"]]
 collision_layer = 5
 script = ExtResource( 1 )
 

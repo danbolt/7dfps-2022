@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Enemy",
+"class": "AttackGoblin",
+"language": "GDScript",
+"path": "res://gameobjects/AttackGoblin.gd"
+}, {
 "base": "Control",
 "class": "Curtains",
 "language": "GDScript",
@@ -60,6 +65,7 @@ _global_script_classes=[ {
 "path": "res://gameobjects/player_character.gd"
 } ]
 _global_script_class_icons={
+"AttackGoblin": "",
 "Curtains": "",
 "DemonHurtbox": "",
 "DivineStrike": "",
