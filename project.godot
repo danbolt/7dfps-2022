@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://models/divine_strike.gd"
 }, {
+"base": "Enemy",
+"class": "DumbDoor",
+"language": "GDScript",
+"path": "res://gameobjects/enemies/dumb_door.gd"
+}, {
 "base": "KinematicBody",
 "class": "Enemy",
 "language": "GDScript",
@@ -69,6 +74,7 @@ _global_script_class_icons={
 "Curtains": "",
 "DemonHurtbox": "",
 "DivineStrike": "",
+"DumbDoor": "",
 "Enemy": "",
 "GameRoot": "",
 "LevelWinZone": "",

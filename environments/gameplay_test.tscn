@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://gameobjects/LevelWinZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gameobjects/enemies/PathFlier.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameobjects/enemies/AttackGoblin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gameobjects/enemies/DumbDoor.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve3D" id=4]
 _data = {
@@ -93,3 +94,5 @@ __meta__ = {
 
 [node name="AttackGoblin" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.742116, 0, 0.670271, 0, 1, 0, -0.670271, 0, -0.742116, -8.65228, 4.24266, -9.07876 )
+
+[node name="DumbDoor" parent="." instance=ExtResource( 7 )]
