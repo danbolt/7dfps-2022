@@ -1,14 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gameobjects/omni_light_flicker.gd" type="Script" id=3]
 [ext_resource path="res://gameobjects/LevelWinZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gameobjects/enemies/PathFlier.tscn" type="PackedScene" id=5]
-[ext_resource path="res://shapes/sphere_shape.tres" type="Shape" id=6]
-[ext_resource path="res://gameobjects/enemies/DemonHurtbox.gd" type="Script" id=7]
-[ext_resource path="res://gameobjects/AttackGoblin.gd" type="Script" id=8]
-[ext_resource path="res://models/attack_goblin_base.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gameobjects/enemies/AttackGoblin.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve3D" id=4]
 _data = {
@@ -94,23 +91,5 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 1, 0 )
 }
 
-[node name="AttackGoblin" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26728, 5.24855, 0.824471 )
-script = ExtResource( 8 )
-
-[node name="attack_goblin_base" parent="AttackGoblin" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="AttackGoblin"]
-shape = ExtResource( 6 )
-
-[node name="DemonHurtbox" type="StaticBody" parent="AttackGoblin"]
-transform = Transform( 1.76422, 0, 0, 0, 2.01471, 0, 0, 0, 1.63049, 0, 0, -0.359693 )
-collision_layer = 10
-collision_mask = 0
-script = ExtResource( 7 )
-
-[node name="CollisionShape" type="CollisionShape" parent="AttackGoblin/DemonHurtbox"]
-shape = ExtResource( 6 )
-
-[node name="NavigationAgent" type="NavigationAgent" parent="AttackGoblin"]
+[node name="AttackGoblin" parent="." instance=ExtResource( 6 )]
+transform = Transform( -0.742116, 0, 0.670271, 0, 1, 0, -0.670271, 0, -0.742116, -8.65228, 4.24266, -9.07876 )
