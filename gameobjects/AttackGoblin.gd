@@ -41,7 +41,7 @@ func on_struck(_hurtbox):
 	
 func has_los(check: Spatial) -> bool:
 	var space_state = get_world().direct_space_state
-	var result = space_state.intersect_ray(global_translation, check.global_translation, [], 1)
+	var result = space_state.intersect_ray(global_translation, check.global_translation, [], 1, true, false)
 	
 	if result:
 		return false

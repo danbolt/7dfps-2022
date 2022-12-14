@@ -49,7 +49,7 @@ func _physics_process(_delta):
 	
 	var path_to_walk: Path = get_node(route_path) as Path
 	
-	var next_point: Vector3 = path_to_walk.curve.get_point_position(current_fly_index)
+	var next_point: Vector3 = path_to_walk.curve.get_point_position(current_fly_index) + path_to_walk.global_translation
 	if (next_point.distance_squared_to(global_translation) <= 1.0):
 		current_fly_index = (current_fly_index + 1) % path_to_walk.curve.get_point_count()
 	
