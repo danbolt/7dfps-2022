@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://shapes/cube_shape.tres" type="Shape" id=2]
+[ext_resource path="res://gameobjects/ExitElevator.gd" type="Script" id=4]
+[ext_resource path="res://gameobjects/enemies/Elevator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gameobjects/LevelWinZone.tscn" type="PackedScene" id=6]
+
+[node name="ExitElevator" type="Spatial"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DetectionZone" type="Area" parent="."]
+transform = Transform( 4.89513, 0, 0, 0, 2.26984, 0, 0, 0, 4.31258, 0, 1.99324, 3.95457 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="DetectionZone"]
+shape = ExtResource( 2 )
+
+[node name="Elevator" parent="." instance=ExtResource( 5 )]
+
+[node name="LevelWinZone" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1.22383, 0, 0, 0, 1, 0, 0, 0, 0.337071, 0, 1.27319, -1.03711 )

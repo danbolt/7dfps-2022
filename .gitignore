@@ -11,4 +11,4 @@ export_presets.cfg
 data_*/
 
 # Blender
-# *.blend1
+*.blend1

@@ -75,15 +75,15 @@ func _physics_process(_delta):
 		if (subscreen_held_state > 0.1):
 			converted_movement *= 0.25
 		camera.global_rotate(Vector3.UP, converted_movement.x * -1.0 * (turn_speed + x_sensitivity_modifier))
-		camera.global_rotate(camera.transform.basis.x, converted_movement.y * (turn_speed + y_sensitivity_modifier) * (1.0 if y_invert else -1.0))
+		camera.global_rotate(camera.global_transform.basis.x, converted_movement.y * (turn_speed + y_sensitivity_modifier) * (1.0 if y_invert else -1.0))
 		mouse_move_accumulation = Vector2.ZERO
 		
 	camera.global_rotation.x = min(max(camera.global_rotation.x, -1.3), 1.3)
 	camera.rotation.z = 0.0
 	
 	# Move based on the camera's direction
-	var camera_forward = camera.transform.basis.z * -1.0
-	var camera_right = camera.transform.basis.x
+	var camera_forward = camera.global_transform.basis.z * -1.0
+	var camera_right = camera.global_transform.basis.x
 	var stepDirection = ((camera_forward * moveVector.y) + (camera_right * moveVector.x))
 	stepDirection.y = 0.0
 	stepDirection = stepDirection.normalized()
