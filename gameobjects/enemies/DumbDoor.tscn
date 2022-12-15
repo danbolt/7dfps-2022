@@ -11,7 +11,7 @@ script = ExtResource( 3 )
 identifier = "Goblin Door"
 
 [node name="BoxBody" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1.80759, 0, 0, 0, 2.33582, 0, 0, 0, 0.403995, 0, 0.803835, 0 )
+transform = Transform( 1.80759, 0, 0, 0, 2.33582, 0, 0, 0, 0.403995, 0, 1.33534, 0 )
 
 [node name="dumbdoor" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269688, 0 )

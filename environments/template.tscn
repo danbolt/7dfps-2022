@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
+[ext_resource path="res://gameobjects/ExitElevator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gameobjects/EntryElevator.tscn" type="PackedScene" id=4]
+
+[sub_resource type="NavigationMesh" id=1]
+agent_radius = 0.85
+agent_max_slope = 75.22
+edge_max_error = 1.4
+
+[node name="stage1" type="Spatial"]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+navmesh = SubResource( 1 )
+
+[node name="GridMap" type="GridMap" parent="NavigationMeshInstance"]
+mesh_library = ExtResource( 1 )
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="EntryElevator" parent="." instance=ExtResource( 4 )]
+
+[node name="ExitElevator" parent="." instance=ExtResource( 2 )]
+
+[node name="PlayerMovement" parent="." instance=ExtResource( 3 )]

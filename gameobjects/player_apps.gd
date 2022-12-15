@@ -20,6 +20,8 @@ onready var crosshairs: Spatial = $CameraScreen/Crosshairs
 onready var offlight: Spatial = $PhoneBody/OffLight
 onready var onlight: Spatial = $PhoneBody/Onlight
 
+onready var subcamera: Spatial = $Viewport/SubCamera
+
 onready var divine_strike_prefab = preload("res://models/divine_strike.tscn")
 
 func process_next_app():
@@ -32,6 +34,7 @@ func process_next_app():
 	
 
 func _ready():
+	
 	other_apps_screen.visible = false
 	
 	target_found_text.visible = false
@@ -52,7 +55,7 @@ func _ready():
 func _physics_process(delta):
 	
 	var space_state = get_world().direct_space_state
-	var result = space_state.intersect_ray(global_translation + global_transform.basis.z * 2.5, global_transform.basis.z * -100, [], 2)
+	var result = space_state.intersect_ray(subcamera.global_translation + subcamera.global_transform.basis.z * 2.5, subcamera.global_transform.basis.z * -100, [], 2)
 	
 	if current_hurtbox == null and result and (result.collider is DemonHurtbox):
 		current_hurtbox = result.collider as DemonHurtbox
