@@ -10,6 +10,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 1 )
+identifier = "Winged Cretin"
 
 [node name="DemonSphereHurtbox" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2.77342, 0, 0, 0, 2.39986, -2.77544e-08, 0, -2.77544e-08, 1.76491, 0, -0.20929, 9.14836e-09 )

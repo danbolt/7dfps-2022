@@ -128,7 +128,7 @@ skeleton = NodePath("../../..")
 material/0 = SubResource( 5 )
 
 [node name="TargetInfoText" type="Label3D" parent="Camera/Subscreen/CameraScreen"]
-transform = Transform( 0.059, -1.61656e-23, 3.67889e-09, 0, 0.027, 6.66609e-16, -3.39148e-09, -2.81225e-16, 0.064, -0.39, 0.418, 0 )
+transform = Transform( 0.059, -1.86265e-09, 4.19095e-09, 1.86265e-09, 0.027, 4.65661e-10, -3.72529e-09, -4.65661e-10, 0.064, -0.39, 0.418, -5.96046e-08 )
 double_sided = false
 no_depth_test = true
 alpha_scissor_threshold = 0.27
@@ -150,7 +150,7 @@ font = ExtResource( 5 )
 line_spacing = 0.011
 
 [node name="TargetDataText" type="Label3D" parent="Camera/Subscreen/CameraScreen"]
-transform = Transform( 0.059, -1.61656e-23, 3.67889e-09, 0, 0.027, 6.66609e-16, -3.39148e-09, -2.81225e-16, 0.064, -0.39, 0.418, 0 )
+transform = Transform( 0.059, -1.86265e-09, 4.19095e-09, 1.86265e-09, 0.027, 4.65661e-10, -3.72529e-09, -4.65661e-10, 0.064, -0.39, 0.418, -5.96046e-08 )
 double_sided = false
 no_depth_test = true
 alpha_scissor_threshold = 0.27

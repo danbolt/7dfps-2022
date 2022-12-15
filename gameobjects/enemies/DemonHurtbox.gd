@@ -1,5 +1,7 @@
 class_name DemonHurtbox extends StaticBody
 
+export var identifier: String = "UNKNOWN"
+
 signal struck()
 
 func strike():

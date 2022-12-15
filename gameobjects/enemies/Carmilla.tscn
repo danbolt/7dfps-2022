@@ -8,6 +8,7 @@
 [node name="Carmilla" type="KinematicBody"]
 transform = Transform( 1.53767, 0, 0, 0, 1.53767, 0, 0, 0, 1.53767, 0, 0, 0 )
 script = ExtResource( 1 )
+identifier = "Carmilla, vamiric executive"
 
 [node name="carmilla" parent="." instance=ExtResource( 2 )]
 
@@ -20,6 +21,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.284816 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 3 )
+identifier = "Carmilla, Vampiric CFO"
 
 [node name="CollisionShape" type="CollisionShape" parent="hurtbox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.691673, 0, 0, 0 )

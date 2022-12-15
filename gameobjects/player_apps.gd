@@ -59,6 +59,8 @@ func _physics_process(delta):
 		bar_fill_percentage = 0.0
 		progress_bar_backing.scale = Vector3(1.0, 0.0, 1.0)
 		
+		target_data_text.text = (result.collider as DemonHurtbox).identifier
+		
 		var t = get_tree().create_tween()
 		t.tween_property(progress_bar_backing, "scale", Vector3.ONE, 0.161)
 		

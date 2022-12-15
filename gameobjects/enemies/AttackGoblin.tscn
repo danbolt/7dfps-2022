@@ -8,6 +8,7 @@
 [node name="AttackGoblin" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26728, 5.24855, 0.824471 )
 script = ExtResource( 2 )
+identifier = "Power Bull"
 
 [node name="attack_goblin_base" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )

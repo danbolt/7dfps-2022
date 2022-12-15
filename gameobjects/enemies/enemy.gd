@@ -1,5 +1,7 @@
 class_name Enemy extends KinematicBody
 
+export var identifier: String = "UNKNOWN"
+
 signal been_struck(hurtbox)
 
 # warning-ignore:unused_signal
@@ -18,6 +20,7 @@ func _ready():
 	for child in get_children():
 		if (child is DemonHurtbox):
 			var _connectToChildResult = (child as DemonHurtbox).connect("struck", self, "on_hurtbox_struck", [ child ])
+			(child as DemonHurtbox).identifier = identifier
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
