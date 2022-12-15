@@ -12,6 +12,15 @@ func on_died():
 
 func on_hurtbox_struck(hurtbox: DemonHurtbox):
 	emit_signal("been_struck", hurtbox)
+	
+func has_los(check: Spatial) -> bool:
+	var space_state = get_world().direct_space_state
+	var result = space_state.intersect_ray(global_translation, check.global_translation, [], 1, true, false)
+	
+	if result:
+		return false
+	
+	return true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

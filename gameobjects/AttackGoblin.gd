@@ -39,15 +39,6 @@ func on_struck(_hurtbox):
 	
 	var _connect_to_anim_finish = animation_player.connect("animation_finished", self, "on_animation_done")
 	
-func has_los(check: Spatial) -> bool:
-	var space_state = get_world().direct_space_state
-	var result = space_state.intersect_ray(global_translation, check.global_translation, [], 1, true, false)
-	
-	if result:
-		return false
-	
-	return true
-	
 func _process(_delta):
 	if dying:
 		return
