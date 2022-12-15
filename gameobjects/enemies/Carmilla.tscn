@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://gameobjects/Carmilla.gd" type="Script" id=1]
+[ext_resource path="res://models/environment/carmilla.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameobjects/enemies/DemonHurtbox.gd" type="Script" id=3]
+[ext_resource path="res://shapes/cube_shape.tres" type="Shape" id=4]
+
+[node name="Carmilla" type="KinematicBody"]
+transform = Transform( 1.53767, 0, 0, 0, 1.53767, 0, 0, 0, 1.53767, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="carmilla" parent="." instance=ExtResource( 2 )]
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.27604, 0.961146, 0, -0.961146, 0.27604, 0, 2.71636, 1 )
+spot_angle = 34.2075
+
+[node name="hurtbox" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.284816 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="hurtbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.691673, 0, 0, 0 )
+shape = ExtResource( 4 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://gameobjects/enemies/PathFlier.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameobjects/enemies/AttackGoblin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gameobjects/ExitElevator.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gameobjects/enemies/Carmilla.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve3D" id=4]
 _data = {
@@ -101,3 +102,6 @@ transform = Transform( -0.818618, 0, -7.15658e-08, 0, 1, 0, 8.74228e-08, 0, -1, 
 
 [node name="EntryElevator" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 0, 23 )
+
+[node name="Carmilla" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.0689756, 0, -1.53612, 0, 1.53767, 0, 1.53612, 0, 0.0689756, 0, 3.87391, 16.1697 )
