@@ -25,4 +25,4 @@ func _process(_delta):
 	outline.scale = Vector3(scaleValue, scaleValue, scaleValue) + Vector3.ONE
 
 func _ready():
-	var _connect_result = connect("body_exited", self, "on_hit_wall")
+	var _connect_result = connect("body_entered", self, "on_hit_wall")

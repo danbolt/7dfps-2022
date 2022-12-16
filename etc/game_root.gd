@@ -5,10 +5,13 @@ onready var curtains: Curtains = $curtains
 
 onready var gameplay_viewport: Viewport = $ViewportContainer/Viewport
 
-var current_stage: int = 0
+var current_stage: int = 1
 var stages = [
 	{
 		'scene': "res://environments/stage1.tscn"
+	},
+	{
+		'scene': "res://environments/stage2.tscn"
 	},
 	{
 		'scene': "res://environments/gameplay_test.tscn"
@@ -97,8 +100,6 @@ func _ready():
 	pause_root.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	
-	current_stage = 0
 	start_stage(current_stage)
 	curtains.open_curtains()
 	

@@ -18,7 +18,12 @@ const DOT_FOV_ANGLE = 0.51
 
 onready var projectile = preload("res://gameobjects/EnemyProjectile.tscn")
 
-var shot_time = 0.0
+
+export var fire_rate: float = 1.0
+export var shot_speed: float = 3.0
+
+
+var shot_time = fire_rate
 
 func on_animation_done(_animation_name):
 	emit_signal("died")
@@ -43,7 +48,7 @@ func _ready():
 	dying = false
 	shooting_at = null
 	
-	shot_time = 0.0 + randf()
+	shot_time = fire_rate - 0.01
 	
 	var _connect_struck_result = connect("been_struck", self, "on_struck")
 
@@ -62,7 +67,8 @@ func _physics_process(delta):
 		var all_players: Array = get_tree().get_nodes_in_group("player_character")
 		for player in all_players:
 			var directionToPlayer: Vector3 = ((player as Spatial).global_translation - global_translation).normalized()
-			if global_transform.looking_at((player as Spatial).global_translation, Vector3.UP) and has_los(player):
+			var can_see = global_transform.basis.z.dot(directionToPlayer) > 0.5
+			if can_see and has_los(player):
 				shooting_at = player
 				look_at(global_translation - (directionToPlayer), Vector3.UP)
 	else:
@@ -75,12 +81,12 @@ func _physics_process(delta):
 	if (shooting_at != null):
 		animation_player.playback_speed = 2.0
 		shot_time += delta
-		if (shot_time > 1.0):
+		if (shot_time > fire_rate):
 			var new_proj: EnemyProjectile = projectile.instance()
 			get_parent().add_child(new_proj)
 			new_proj.global_translation = global_translation
 			new_proj.fly_dir = (shooting_at.global_translation - global_translation).normalized()
-			new_proj.fly_speed = 3.0
+			new_proj.fly_speed = shot_speed
 			shot_time = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

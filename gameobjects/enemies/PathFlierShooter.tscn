@@ -6,7 +6,6 @@
 [ext_resource path="res://gameobjects/enemies/DemonSphereHurtbox.tscn" type="PackedScene" id=4]
 
 [node name="PathFlierShooter" type="KinematicBody"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 1 )
