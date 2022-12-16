@@ -16,7 +16,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0 )
 }
 
-[sub_resource type="ProceduralSky" id=6]
+[sub_resource type="ProceduralSky" id=8]
 sky_top_color = Color( 0.376471, 0.317647, 0.317647, 1 )
 sky_horizon_color = Color( 1, 0.505882, 0.0705882, 1 )
 sky_curve = 0.0535144
@@ -28,7 +28,7 @@ sun_energy = 15.31
 
 [sub_resource type="Environment" id=5]
 background_mode = 2
-background_sky = SubResource( 6 )
+background_sky = SubResource( 8 )
 ambient_light_color = Color( 0.317647, 0.172549, 0.172549, 1 )
 ambient_light_energy = 2.23
 ambient_light_sky_contribution = 0.19

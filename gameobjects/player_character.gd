@@ -67,7 +67,7 @@ func _physics_process(_delta):
 	
 	# Turn the camera
 	camera.global_rotate(Vector3.UP, turnVector.x * -1.0 * (turn_speed + x_sensitivity_modifier))
-	camera.global_rotate(camera.transform.basis.x, turnVector.y * (turn_speed + y_sensitivity_modifier) * (-1.0 if y_invert else 1.0 ))
+	camera.global_rotate(camera.global_transform.basis.x, turnVector.y * (turn_speed + y_sensitivity_modifier) * (-1.0 if y_invert else 1.0 ))
 	
 	# Mouselook for camera turning
 	if (not mouse_move_accumulation.is_equal_approx(Vector2.ZERO)):

@@ -5,13 +5,16 @@ onready var curtains: Curtains = $curtains
 
 onready var gameplay_viewport: Viewport = $ViewportContainer/Viewport
 
-var current_stage: int = 1
+var current_stage: int = 2
 var stages = [
 	{
 		'scene': "res://environments/stage1.tscn"
 	},
 	{
 		'scene': "res://environments/stage2.tscn"
+	},
+	{
+		'scene': "res://environments/stage3.tscn"
 	},
 	{
 		'scene': "res://environments/gameplay_test.tscn"
