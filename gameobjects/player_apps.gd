@@ -1,7 +1,9 @@
-extends Spatial
+class_name PlayerApps extends Spatial
 
 onready var camera_screen = $CameraScreen
 onready var other_apps_screen = $OtherAppsScreen
+
+onready var other_apps_control = $Viewport2/Camera/Apps
 
 onready var target_info_text = $CameraScreen/TargetInfoText
 onready var target_data_text = $CameraScreen/TargetDataText
@@ -22,16 +24,33 @@ onready var onlight: Spatial = $PhoneBody/Onlight
 
 onready var subcamera: Spatial = $Viewport/SubCamera
 
+onready var phone_vibrate_audio = $PhoneVibrate
+onready var stuck_noise_audio = $StuckNoise
+
 onready var divine_strike_prefab = preload("res://models/divine_strike.tscn")
 
-func process_next_app():
-	if camera_screen.visible:
-		camera_screen.visible = false
-		other_apps_screen.visible = true
-	elif other_apps_screen.visible:
-		camera_screen.visible = true
-		other_apps_screen.visible = false
+func show_other_app_screen():
+	camera_screen.visible = false
+	other_apps_screen.visible = true
 	
+func show_camera_screen():
+	camera_screen.visible = true
+	other_apps_screen.visible = false
+	
+func instance_other_app(otherApp: PackedScene) -> Control:
+	for child in other_apps_control.get_children():
+		other_apps_control.queue_free()
+	
+	var newApp = otherApp.instance()
+	other_apps_control.add_child(newApp)
+	
+	return newApp as Control
+	
+func play_vibrate_sound():
+	phone_vibrate_audio.play()
+	
+func play_stuck_noise():
+	stuck_noise_audio.play()
 
 func _ready():
 	
@@ -107,8 +126,6 @@ func on_divine_strike_timeout_done():
 	onlight.visible = false
 	
 func _process(_delta):
-	if Input.is_action_just_released("next_app") or Input.is_action_just_released("prev_app"):
-		process_next_app()
 	
 	if current_hurtbox != null:
 		target_found_text.visible = true

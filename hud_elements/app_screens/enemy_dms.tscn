@@ -1,36 +1,188 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/lato/lato_phone.tres" type="DynamicFont" id=1]
 [ext_resource path="res://hud_elements/textures/stuck_logo.png" type="Texture" id=2]
+[ext_resource path="res://hud_elements/app_screens/enemy_dms.gd" type="Script" id=3]
+[ext_resource path="res://bgm/brandenburg3.ogg" type="AudioStream" id=4]
+[ext_resource path="res://bgm/intro_lines.ogg" type="AudioStream" id=5]
+[ext_resource path="res://hud_elements/DM.tscn" type="PackedScene" id=6]
+[ext_resource path="res://hud_elements/dracula_avi.png" type="Texture" id=7]
 
 [node name="enemy_dms" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -840.0
 margin_bottom = 840.0
+script = ExtResource( 3 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="WhiteBack" type="ColorRect" parent="."]
 margin_right = 1080.0
 margin_bottom = 1920.0
 
-[node name="Side Bar" type="ColorRect" parent="."]
-margin_right = 152.0
+[node name="StuckLogo" type="Sprite" parent="."]
+position = Vector2( 576, 824 )
+scale = Vector2( 0.353, 0.353 )
+texture = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="StuckLogo"]
+margin_left = -747.663
+margin_top = -62.7031
+margin_right = -656.663
+margin_bottom = 5.29688
+rect_rotation = -17.8861
+color = Color( 0.333333, 0.878431, 0.984314, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="StuckLogo"]
+margin_left = -634.561
+margin_top = -62.3547
+margin_right = -543.561
+margin_bottom = 5.64526
+rect_rotation = -17.8861
+color = Color( 0.984314, 0.835294, 0.333333, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="StuckLogo"]
+margin_left = -747.875
+margin_top = 28.2969
+margin_right = -656.875
+margin_bottom = 96.2969
+rect_rotation = -17.8861
+color = Color( 0.984314, 0.423529, 0.333333, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="StuckLogo"]
+margin_left = -634.773
+margin_top = 28.6453
+margin_right = -543.773
+margin_bottom = 96.6453
+rect_rotation = -17.8861
+color = Color( 0.415686, 0.984314, 0.333333, 1 )
+
+[node name="DmBit" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="SideBar" type="ColorRect" parent="DmBit"]
+margin_right = 164.0
 margin_bottom = 1920.0
 color = Color( 0.247059, 0.054902, 0.25098, 1 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = 248.0
-margin_top = 56.0
-margin_right = 621.0
-margin_bottom = 134.0
+[node name="Texts" type="Control" parent="DmBit"]
+margin_left = 8.0
+margin_top = 160.0
+margin_right = 48.0
+margin_bottom = 200.0
+
+[node name="DM1" parent="DmBit/Texts" instance=ExtResource( 6 )]
+margin_left = 168.0
+margin_top = -8.0
+margin_right = 208.0
+margin_bottom = 32.0
+delay = 0.329
+
+[node name="Label" type="Label" parent="DmBit/Texts/DM1"]
+margin_right = 880.0
+margin_bottom = 2103.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "Dear Mortals,
+text = "Hey team, Count Dracula here."
+autowrap = true
 
-Test "
+[node name="DM2" parent="DmBit/Texts" instance=ExtResource( 6 )]
+margin_left = 168.0
+margin_top = 48.0
+margin_right = 208.0
+margin_bottom = 88.0
+delay = 2.709
 
-[node name="StuckLogo" type="Sprite" parent="."]
-visible = false
-position = Vector2( 400, 72 )
-scale = Vector2( 0.353242, 0.353242 )
-texture = ExtResource( 2 )
+[node name="Label" type="Label" parent="DmBit/Texts/DM2"]
+margin_right = 880.0
+margin_bottom = 6639.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Just letting everybody know the exiting new ways we're going forward into the Christmas season."
+autowrap = true
+
+[node name="DM3" parent="DmBit/Texts" instance=ExtResource( 6 )]
+margin_left = 168.0
+margin_top = 208.0
+margin_right = 208.0
+margin_bottom = 248.0
+delay = 7.842
+
+[node name="Label" type="Label" parent="DmBit/Texts/DM3"]
+margin_right = 880.0
+margin_bottom = 645.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "In light of the recent budget cutbacks, we'll be suspending dental care for the coming year.
+"
+autowrap = true
+
+[node name="DM4" parent="DmBit/Texts" instance=ExtResource( 6 )]
+margin_left = 168.0
+margin_top = 320.0
+margin_right = 208.0
+margin_bottom = 360.0
+delay = 15.515
+
+[node name="Label" type="Label" parent="DmBit/Texts/DM4"]
+margin_right = 880.0
+margin_bottom = 645.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Will it come back? That's a conversation for next year.
+"
+autowrap = true
+
+[node name="DM5" parent="DmBit/Texts" instance=ExtResource( 6 )]
+margin_left = 168.0
+margin_top = 424.0
+margin_right = 208.0
+margin_bottom = 464.0
+delay = 17.816
+
+[node name="Label" type="Label" parent="DmBit/Texts/DM5"]
+margin_top = 8.0
+margin_right = 880.0
+margin_bottom = 653.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Regardless, I'm happy to have you all on this adventure with me.
+"
+autowrap = true
+
+[node name="brandenburg3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -16.58
+bus = "PatronizingMusic"
+
+[node name="intro_spiel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Voice Lines"
+
+[node name="DraculaAvi" type="Sprite" parent="."]
+position = Vector2( 248, 80 )
+scale = Vector2( 0.499945, 0.499945 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="DraculaAvi"]
+margin_left = 144.016
+margin_top = -128.014
+margin_right = 411.016
+margin_bottom = -23.014
+rect_scale = Vector2( 2.28479, 2.28479 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Count Dracula
+"
+
+[node name="Label2" type="Label" parent="DraculaAvi"]
+margin_left = 160.018
+margin_top = -16.0018
+margin_right = 588.018
+margin_bottom = 88.9982
+rect_scale = Vector2( 1.34821, 1.36498 )
+custom_colors/font_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Chief Executive Officer"

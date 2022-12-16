@@ -25,6 +25,10 @@ var mouse_move_accumulation: Vector2 = Vector2.ZERO
 
 var prevent_movement = false
 
+
+signal phone_up()
+signal phone_down()
+
 func on_touched_hazard(_node):
 	if (prevent_movement):
 		return
@@ -46,8 +50,14 @@ func _input(event):
 	mouse_move_accumulation += (event as InputEventMouseMotion).relative * BESPOKE_MOUSE_SENSITIVITY_MODIFIER
 
 func _physics_process(_delta):
+	var old_held_state = subscreen_held_state
 	subscreen.transform = held_down_transform.interpolate_with(held_up_transform, subscreen_held_state)
 	subscreen_held_state = lerp(subscreen_held_state, Input.get_action_strength("ads"), 0.183)
+	
+	if (subscreen_held_state > 0.95 and old_held_state <= 0.95):
+		emit_signal("phone_up")
+	elif (subscreen_held_state < 0.95 and old_held_state >= 0.95):
+		emit_signal("phone_down")
 	
 	subscreen_zoom_fov = lerp(subscreen_zoom_fov, subscreen_held_state, 0.18)
 	camera.fov = lerp(ZOOMED_OUT_FOV, ZOOMED_IN_FOV, subscreen_zoom_fov)

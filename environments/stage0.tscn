@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://shapes/cube_shape.tres" type="Shape" id=1]
+[ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environments/stage0.gd" type="Script" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="stage0" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="PlayerMovement" parent="." instance=ExtResource( 2 )]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+mesh = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+shape = ExtResource( 1 )

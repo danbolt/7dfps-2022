@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://etc/curtains.gd"
 }, {
+"base": "Control",
+"class": "DM",
+"language": "GDScript",
+"path": "res://hud_elements/app_screens/dm.gd"
+}, {
 "base": "StaticBody",
 "class": "DemonHurtbox",
 "language": "GDScript",
@@ -48,6 +53,11 @@ _global_script_classes=[ {
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://gameobjects/enemies/enemy.gd"
+}, {
+"base": "Control",
+"class": "EnemyDMs",
+"language": "GDScript",
+"path": "res://hud_elements/app_screens/enemy_dms.gd"
 }, {
 "base": "Area",
 "class": "EnemyProjectile",
@@ -89,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://hud_elements/pause_root.gd"
 }, {
+"base": "Spatial",
+"class": "PlayerApps",
+"language": "GDScript",
+"path": "res://gameobjects/player_apps.gd"
+}, {
 "base": "KinematicBody",
 "class": "PlayerMovement",
 "language": "GDScript",
@@ -98,11 +113,13 @@ _global_script_class_icons={
 "AttackGoblin": "",
 "Carmilla": "",
 "Curtains": "",
+"DM": "",
 "DemonHurtbox": "",
 "DivineStrike": "",
 "DumbDoor": "",
 "Elevator": "",
 "Enemy": "",
+"EnemyDMs": "",
 "EnemyProjectile": "",
 "EntryElevator": "",
 "GameRoot": "",
@@ -111,6 +128,7 @@ _global_script_class_icons={
 "PathFlier": "",
 "PathFlierShooter": "",
 "PauseRoot": "",
+"PlayerApps": "",
 "PlayerMovement": ""
 }
 
