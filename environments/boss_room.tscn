@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/EntryElevator.tscn" type="PackedScene" id=2]
@@ -7,14 +7,17 @@
 [ext_resource path="res://gameobjects/PsychadellicSpin.gd" type="Script" id=5]
 [ext_resource path="res://environments/NISCamera.gd" type="Script" id=6]
 [ext_resource path="res://environments/boss_room.gd" type="Script" id=7]
+[ext_resource path="res://gameobjects/enemies/PathFlier.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gameobjects/ShieldCover.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationMesh" id=1]
 agent_radius = 0.85
 agent_max_slope = 75.22
 edge_max_error = 1.4
 
-[sub_resource type="CubeMesh" id=10]
+[sub_resource type="SphereMesh" id=14]
 flip_faces = true
+radius = 6.639
 
 [sub_resource type="Shader" id=11]
 code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
@@ -100,6 +103,12 @@ glow_bloom = 0.21
 
 [sub_resource type="BoxShape" id=13]
 
+[sub_resource type="Curve3D" id=15]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 15.1784, 0, -5.50932, 0, 0, 0, 0, 0, 0, 13.4082, 0, 17.5482, 0, 0, 0, 0, 0, 0, -9.78211, 0, 17.858, 0, 0, 0, 0, 0, 0, -8.89698, 0, -6.83701, 0, 0, 0, 0, 0, 0, 15.1784, 0, -5.50932 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+}
+
 [node name="boss_room" type="Spatial"]
 script = ExtResource( 7 )
 
@@ -125,9 +134,13 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 3,
 [node name="Carmilla" parent="." instance=ExtResource( 3 )]
 transform = Transform( -6.72137e-08, 0, -1.53767, 0, 1.53767, 0, 1.53767, 0, -6.72137e-08, 6, 7, 9 )
 
+[node name="ShieldCover" parent="Carmilla" instance=ExtResource( 9 )]
+transform = Transform( 2.06677, 0, 6.39488e-14, 0, 2.06677, 0, -6.39488e-14, 0, 2.06677, 0, 0, 0 )
+covered_by = NodePath("../../PathFlier")
+
 [node name="PsychadellicSpin" type="MeshInstance" parent="."]
 transform = Transform( 22.0637, 0, 0, 0, 22.0637, 0, 0, 0, 22.0637, 0, 15, 10 )
-mesh = SubResource( 10 )
+mesh = SubResource( 14 )
 material/0 = SubResource( 12 )
 script = ExtResource( 5 )
 
@@ -144,6 +157,7 @@ spot_angle_attenuation = 3.36358
 
 [node name="NISCamera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+far = 150.0
 script = ExtResource( 6 )
 boss = NodePath("../Carmilla")
 pointA = NodePath("../Position3D")
@@ -163,3 +177,11 @@ monitorable = false
 [node name="CollisionShape" type="CollisionShape" parent="entry_nis_shape"]
 transform = Transform( 1.6, 0, 0, 0, 3.1, 0, 0, 0, 3.5, -17.057, 4, 10.0071 )
 shape = SubResource( 13 )
+
+[node name="PathFlier" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 6.31986, -5.84195 )
+route_path = NodePath("../Path")
+
+[node name="Path" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.84947, 0 )
+curve = SubResource( 15 )

@@ -115,7 +115,7 @@ func _physics_process(delta):
 			
 			if not charge_sfx.playing:
 				charge_sfx.play()
-			charge_sfx.pitch_scale = bar_fill_percentage + 1.0
+			charge_sfx.pitch_scale = bar_fill_percentage + 1.0 + rand_range(-0.0125 * 0.5, 0.0125 * 0.5)
 			
 			if (bar_fill_percentage >= 1.0):
 				current_hurtbox.strike()

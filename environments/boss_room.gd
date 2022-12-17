@@ -3,9 +3,17 @@ extends Spatial
 onready var nis: NISCamera = $NISCamera
 onready var psych_spin: PsychadellicSpin = $PsychadellicSpin
 
+onready var boss: Carmilla = $Carmilla
+
 onready var entry_nis_shape: Area = $entry_nis_shape
 
 func on_player_enter(_hitbox):
+	boss.disconnect("been_struck", self, "on_boss_struck")
+	entry_nis_shape.disconnect("body_entered", self, "on_player_enter")
+	
+	if nis == null:
+		return
+	
 	nis.fire_NIS()
 	yield(get_tree().create_timer(nis.turn_time, false), "timeout")
 	
@@ -19,9 +27,17 @@ func on_player_enter(_hitbox):
 func on_done_nis():
 	yield(get_tree().create_timer(1.75, false), "timeout")
 	get_tree().call_group("listen_for_title", "hide_title_text")
+	
+func on_boss_struck(_hitbox):
+	if entry_nis_shape == null:
+		return
+		
+	entry_nis_shape.queue_free()
 
 func _ready():
 	psych_spin.visible = false
+	
+	var _boss_strike_connect = boss.connect("been_struck", self, "on_boss_struck")
 	
 	var _player_entry = entry_nis_shape.connect("body_entered", self, "on_player_enter")
 	

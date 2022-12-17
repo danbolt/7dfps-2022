@@ -12,7 +12,11 @@ export var wait_time: float = 1.0
 signal done_nis()
 
 func _process(_delta):
-	var bossToView: Spatial = get_node(boss) as Spatial
+	var bossToView: Spatial = get_node_or_null(boss) as Spatial
+	if (bossToView == null):
+		queue_free()
+		return
+	
 	look_at(bossToView.global_translation, Vector3.UP)
 
 func fire_NIS():

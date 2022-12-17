@@ -67,12 +67,12 @@ func _physics_process(_delta):
 	
 	if (subscreen_held_state > 0.95 and old_held_state <= 0.95):
 		emit_signal("phone_up")
-		flip_up_sound.pitch_scale = 1 + rand_range(0.8, 1.2)
-		flip_up_sound.play()
-	elif (subscreen_held_state < 0.95 and old_held_state >= 0.95):
-		emit_signal("phone_down")
 		flip_down_sound.pitch_scale = 1 + rand_range(0.8, 1.2)
 		flip_down_sound.play()
+	elif (subscreen_held_state < 0.95 and old_held_state >= 0.95):
+		emit_signal("phone_down")
+		flip_up_sound.pitch_scale = 1 + rand_range(0.8, 1.2)
+		flip_up_sound.play()
 	
 	subscreen_zoom_fov = lerp(subscreen_zoom_fov, subscreen_held_state, 0.18)
 	camera.fov = lerp(ZOOMED_OUT_FOV, ZOOMED_IN_FOV, subscreen_zoom_fov)
