@@ -1,14 +1,14 @@
 extends Spatial
 
-onready var player = $PlayerMovement
+onready var player = $Spatial/PlayerMovement
 
-onready var subscreen: PlayerApps = $PlayerMovement/Camera/Subscreen
+onready var subscreen: PlayerApps = $Spatial/PlayerMovement/Camera/Subscreen
 
-onready var camera_screen: Spatial = $PlayerMovement/Camera/Subscreen/CameraScreen
+onready var camera_screen: Spatial = $Spatial/PlayerMovement/Camera/Subscreen/CameraScreen
 
-onready var left_pano = $opening_pano/left_pano
-onready var right_pano = $opening_pano/right_pano
-onready var temp_loor = $tempFloor
+onready var left_pano = $Spatial/opening_pano/left_pano
+onready var right_pano = $Spatial/opening_pano/right_pano
+onready var temp_loor = $Spatial/tempFloor
 
 onready var intro_bgm = $intro_bgm
 

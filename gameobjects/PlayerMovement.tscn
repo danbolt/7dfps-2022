@@ -80,6 +80,7 @@ collision_layer = 5
 script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
+far = 500.0
 
 [node name="Subscreen" type="Spatial" parent="Camera"]
 transform = Transform( 0.472845, 0.398434, -0.0958452, 0.0305335, 0.140304, 0.488809, 0.438962, -0.438948, 0.0692428, 0.392, -0.372, 0.03 )
