@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/EntryElevator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gameobjects/enemies/Carmilla.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gameobjects/PsychadellicSpin.gd" type="Script" id=5]
+[ext_resource path="res://environments/NISCamera.gd" type="Script" id=6]
+[ext_resource path="res://environments/boss_room.gd" type="Script" id=7]
 
 [sub_resource type="NavigationMesh" id=1]
 agent_radius = 0.85
@@ -96,7 +98,10 @@ glow_enabled = true
 glow_intensity = 3.07
 glow_bloom = 0.21
 
-[node name="stage1" type="Spatial"]
+[sub_resource type="BoxShape" id=13]
+
+[node name="boss_room" type="Spatial"]
+script = ExtResource( 7 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
 navmesh = SubResource( 1 )
@@ -136,3 +141,25 @@ light_energy = 1.988
 spot_range = 38.9694
 spot_attenuation = 0.406126
 spot_angle_attenuation = 3.36358
+
+[node name="NISCamera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+script = ExtResource( 6 )
+boss = NodePath("../Carmilla")
+pointA = NodePath("../Position3D")
+pointB = NodePath("../Position3D2")
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.844135, 8, 0.0128429 )
+
+[node name="Position3D2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85707, 8, 12.9217 )
+
+[node name="entry_nis_shape" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="entry_nis_shape"]
+transform = Transform( 1.6, 0, 0, 0, 3.1, 0, 0, 0, 3.5, -17.057, 4, 10.0071 )
+shape = SubResource( 13 )

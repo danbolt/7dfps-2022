@@ -50,11 +50,17 @@ func player_finished_stage():
 
 # This is used for mouselook 
 func _input(event):
+	if  not (camera.current):
+		return
+	
 	if (not event is InputEventMouseMotion):
 		return
 	mouse_move_accumulation += (event as InputEventMouseMotion).relative * BESPOKE_MOUSE_SENSITIVITY_MODIFIER
 
 func _physics_process(_delta):
+	if  not (camera.current):
+		return
+	
 	var old_held_state = subscreen_held_state
 	subscreen.transform = held_down_transform.interpolate_with(held_up_transform, subscreen_held_state)
 	subscreen_held_state = lerp(subscreen_held_state, Input.get_action_strength("ads"), 0.183)
