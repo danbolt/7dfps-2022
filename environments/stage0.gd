@@ -25,6 +25,8 @@ func kill_panos():
 func on_ontro_done():
 	var timer_time = 1.1
 	
+	player.lock_turns = false
+	
 	intro_bgm.play()
 	
 	yield(get_tree().create_timer(2.0, false), "timeout")
@@ -88,5 +90,7 @@ func buzz():
 	player.connect("phone_up", self, "on_first_phone_up", [  enemy_dms ])
 
 func _ready():
+	player.lock_turns = false
+	
 	subscreen.show_other_app_screen()
 	buzz()

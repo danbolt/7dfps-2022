@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://models/divine_strike.glb" type="PackedScene" id=1]
 [ext_resource path="res://models/divine_strike.gd" type="Script" id=2]
 [ext_resource path="res://gameobjects/omni_light_flicker.gd" type="Script" id=3]
 [ext_resource path="res://models/Material.material" type="Material" id=4]
+[ext_resource path="res://sfx/divine_strike.wav" type="AudioStream" id=5]
+[ext_resource path="res://sfx/divine_strike2.wav" type="AudioStream" id=6]
+[ext_resource path="res://sfx/divine_strike3.wav" type="AudioStream" id=7]
 
 [sub_resource type="Curve" id=2]
 min_value = -200.0
@@ -49,3 +52,24 @@ draw_pass_1 = SubResource( 4 )
 light_color = Color( 1, 0.960784, 0.0823529, 1 )
 script = ExtResource( 3 )
 flicker_magnitude = 2.0
+
+[node name="attack_sound_1" type="AudioStreamPlayer3D" parent="." index="2"]
+stream = ExtResource( 5 )
+unit_db = 4.0
+unit_size = 15.1
+max_db = 6.0
+bus = "Sound Effects"
+
+[node name="attack_sound_2" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource( 6 )
+unit_db = 4.0
+unit_size = 15.1
+max_db = 6.0
+bus = "Sound Effects"
+
+[node name="attack_sound_3" type="AudioStreamPlayer3D" parent="." index="4"]
+stream = ExtResource( 7 )
+unit_db = 4.0
+unit_size = 15.1
+max_db = 6.0
+bus = "Sound Effects"

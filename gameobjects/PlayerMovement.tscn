@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://gameobjects/player_character.gd" type="Script" id=1]
 [ext_resource path="res://shapes/player_collision_shape.tres" type="Shape" id=2]
@@ -13,6 +13,11 @@
 [ext_resource path="res://gameobjects/phone_material.tres" type="Material" id=11]
 [ext_resource path="res://gameobjects/omni_light_flicker.gd" type="Script" id=12]
 [ext_resource path="res://sfx/stuck.wav" type="AudioStream" id=13]
+[ext_resource path="res://sfx/charge.wav" type="AudioStream" id=14]
+[ext_resource path="res://sfx/flip_down_a.wav" type="AudioStream" id=15]
+[ext_resource path="res://sfx/flip_up_a.wav" type="AudioStream" id=16]
+[ext_resource path="res://sfx/lock_on.wav" type="AudioStream" id=17]
+[ext_resource path="res://sfx/lock_off.wav" type="AudioStream" id=18]
 
 [sub_resource type="CubeMesh" id=11]
 subdivide_width = 5
@@ -350,6 +355,43 @@ material/0 = SubResource( 8 )
 [node name="PhoneVibrate" type="AudioStreamPlayer3D" parent="Camera/Subscreen"]
 transform = Transform( -1.5482, 0, -1.73835e-07, 0, 1.64153, 0, 1.35348e-07, 0, -1.98844, 2.08616e-07, 0.352866, -0.258656 )
 stream = ExtResource( 3 )
+bus = "Sound Effects"
+emission_angle_enabled = true
+
+[node name="FlipUpSound" type="AudioStreamPlayer3D" parent="Camera/Subscreen"]
+transform = Transform( -1.5482, 0, -1.73835e-07, 0, 1.64153, 0, 1.35348e-07, 0, -1.98844, 2.08616e-07, 0.352866, -0.258656 )
+stream = ExtResource( 16 )
+bus = "Sound Effects"
+emission_angle_enabled = true
+
+[node name="LockOnSound" type="AudioStreamPlayer3D" parent="Camera/Subscreen"]
+transform = Transform( -1.5482, 0, -1.73835e-07, 0, 1.64153, 0, 1.35348e-07, 0, -1.98844, 2.08616e-07, 0.352866, -0.258656 )
+stream = ExtResource( 17 )
+bus = "Sound Effects"
+emission_angle_enabled = true
+
+[node name="LockOffSound" type="AudioStreamPlayer3D" parent="Camera/Subscreen"]
+transform = Transform( -1.5482, 0, -1.73835e-07, 0, 1.64153, 0, 1.35348e-07, 0, -1.98844, 2.08616e-07, 0.352866, -0.258656 )
+stream = ExtResource( 18 )
+bus = "Sound Effects"
+emission_angle_enabled = true
+
+[node name="FireSound" type="AudioStreamPlayer3D" parent="Camera/Subscreen"]
+transform = Transform( -1.5482, 0, -1.73835e-07, 0, 1.64153, 0, 1.35348e-07, 0, -1.98844, 2.08616e-07, 0.352866, -0.258656 )
+stream = ExtResource( 17 )
+unit_db = 1.0
+bus = "Sound Effects"
+emission_angle_enabled = true
+
+[node name="FlipDownSound" type="AudioStreamPlayer3D" parent="Camera/Subscreen"]
+transform = Transform( -1.5482, 0, -1.73835e-07, 0, 1.64153, 0, 1.35348e-07, 0, -1.98844, 2.08616e-07, 0.352866, -0.258656 )
+stream = ExtResource( 15 )
+bus = "Sound Effects"
+emission_angle_enabled = true
+
+[node name="ChargeSound" type="AudioStreamPlayer3D" parent="Camera/Subscreen"]
+transform = Transform( -1.5482, 0, -1.73835e-07, 0, 1.64153, 0, 1.35348e-07, 0, -1.98844, 2.08616e-07, 0.352866, -0.258656 )
+stream = ExtResource( 14 )
 bus = "Sound Effects"
 emission_angle_enabled = true
 

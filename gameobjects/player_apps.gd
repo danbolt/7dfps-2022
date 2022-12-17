@@ -27,6 +27,12 @@ onready var subcamera: Spatial = $Viewport/SubCamera
 onready var phone_vibrate_audio = $PhoneVibrate
 onready var stuck_noise_audio = $StuckNoise
 
+onready var charge_sfx = $ChargeSound
+
+onready var lock_on_sound = $LockOnSound
+onready var lock_off_sound = $LockOffSound
+onready var fire_sound = $FireSound
+
 onready var divine_strike_prefab = preload("res://models/divine_strike.tscn")
 
 func show_other_app_screen():
@@ -89,20 +95,31 @@ func _physics_process(delta):
 		target_found_text.scale = Vector3(0.059, 0, 0.064)
 		var t2 = get_tree().create_tween()
 		t2.tween_property(target_found_text, "scale", Vector3(0.059, 0.027, 0.064), 0.161)
+		
+		lock_on_sound.play()
 	elif current_hurtbox != null and result and result.collider != current_hurtbox:
 		current_hurtbox = null
 	elif current_hurtbox != null and result and result.collider == current_hurtbox:
 		# looking at the same demon; no need to do anything
 		pass
+	elif current_hurtbox != null and !result:
+		current_hurtbox = null
+		lock_off_sound.play()
 	else: 
 		current_hurtbox = null
 		
 	
 	if current_hurtbox != null and (Input.is_action_pressed("fire")):
-		bar_fill_percentage += delta * 0.44
+		bar_fill_percentage += delta * 0.24
+		
+		if not charge_sfx.playing:
+			charge_sfx.play()
+		charge_sfx.pitch_scale = bar_fill_percentage + 1.0
 		
 		if (bar_fill_percentage >= 1.0):
 			current_hurtbox.strike()
+			fire_sound.pitch_scale = 2.0
+			fire_sound.play()
 			
 			var divine_strike_anim = divine_strike_prefab.instance()
 			

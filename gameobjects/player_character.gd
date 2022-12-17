@@ -25,6 +25,11 @@ var mouse_move_accumulation: Vector2 = Vector2.ZERO
 
 var prevent_movement = false
 
+export var lock_turns = false
+
+onready var flip_up_sound = $Camera/Subscreen/FlipUpSound
+onready var flip_down_sound = $Camera/Subscreen/FlipDownSound
+
 
 signal phone_up()
 signal phone_down()
@@ -56,8 +61,12 @@ func _physics_process(_delta):
 	
 	if (subscreen_held_state > 0.95 and old_held_state <= 0.95):
 		emit_signal("phone_up")
+		flip_up_sound.pitch_scale = 1 + rand_range(0.8, 1.2)
+		flip_up_sound.play()
 	elif (subscreen_held_state < 0.95 and old_held_state >= 0.95):
 		emit_signal("phone_down")
+		flip_down_sound.pitch_scale = 1 + rand_range(0.8, 1.2)
+		flip_down_sound.play()
 	
 	subscreen_zoom_fov = lerp(subscreen_zoom_fov, subscreen_held_state, 0.18)
 	camera.fov = lerp(ZOOMED_OUT_FOV, ZOOMED_IN_FOV, subscreen_zoom_fov)
@@ -76,11 +85,12 @@ func _physics_process(_delta):
 		turnVector *= 0.45
 	
 	# Turn the camera
-	camera.global_rotate(Vector3.UP, turnVector.x * -1.0 * (turn_speed + x_sensitivity_modifier))
-	camera.global_rotate(camera.global_transform.basis.x, turnVector.y * (turn_speed + y_sensitivity_modifier) * (-1.0 if y_invert else 1.0 ))
+	if not lock_turns:
+		camera.global_rotate(Vector3.UP, turnVector.x * -1.0 * (turn_speed + x_sensitivity_modifier))
+		camera.global_rotate(camera.global_transform.basis.x, turnVector.y * (turn_speed + y_sensitivity_modifier) * (-1.0 if y_invert else 1.0 ))
 	
 	# Mouselook for camera turning
-	if (not mouse_move_accumulation.is_equal_approx(Vector2.ZERO)):
+	if (not mouse_move_accumulation.is_equal_approx(Vector2.ZERO)) and not lock_turns:
 		var converted_movement = Vector2(deg2rad(mouse_move_accumulation.x), deg2rad(mouse_move_accumulation.y))
 		if (subscreen_held_state > 0.1):
 			converted_movement *= 0.25
@@ -113,6 +123,8 @@ func _physics_process(_delta):
 
 func _ready():
 	move_speed = Vector3.ZERO
+	
+	lock_turns = false
 	
 	mouse_move_accumulation = Vector2.ZERO
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://shapes/cube_shape.tres" type="Shape" id=1]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://gameobjects/ExitElevator.tscn" type="PackedScene" id=7]
 [ext_resource path="res://bgm/callout.ogg" type="AudioStream" id=8]
 [ext_resource path="res://sfx/glass_grash.wav" type="AudioStream" id=9]
+[ext_resource path="res://environments/stage0_appearance.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -46,6 +47,37 @@ surfaces/0 = {
 "skeleton_aabb": [  ],
 "vertex_count": 287
 }
+
+[sub_resource type="ProceduralSky" id=8]
+sky_top_color = Color( 0.376471, 0.317647, 0.317647, 1 )
+sky_horizon_color = Color( 1, 0.505882, 0.0705882, 1 )
+sky_curve = 0.0535144
+sun_color = Color( 0.619608, 0.635294, 0.509804, 1 )
+sun_latitude = 78.9
+sun_longitude = -89.27
+sun_curve = 0.0392292
+sun_energy = 15.31
+
+[sub_resource type="Environment" id=9]
+background_mode = 2
+background_sky = SubResource( 8 )
+ambient_light_color = Color( 0.317647, 0.172549, 0.172549, 1 )
+ambient_light_energy = 2.23
+ambient_light_sky_contribution = 0.19
+fog_enabled = true
+fog_color = Color( 0.384314, 0.27451, 0.235294, 1 )
+fog_sun_color = Color( 0.623529, 0.521569, 0.521569, 1 )
+fog_depth_end = 1102.7
+fog_depth_curve = 6.06286
+fog_transmit_curve = 1.18921
+fog_height_enabled = true
+fog_height_max = -30.5
+fog_height_curve = 3.13834
+glow_enabled = true
+glow_intensity = 3.07
+glow_bloom = 0.21
+
+[sub_resource type="CubeMesh" id=10]
 
 [node name="stage0" type="Spatial"]
 script = ExtResource( 3 )
@@ -132,6 +164,7 @@ skeleton = NodePath("../..")
 material/0 = SubResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="Spatial/real_floor2"]
+transform = Transform( 1, 0, 0, 0, 1, 2.38419e-07, 0, 0, 1, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/real_floor2/StaticBody"]
 shape = SubResource( 4 )
@@ -165,3 +198,12 @@ transform = Transform( 1.4117, 0, 0, 0, 1.21834, 0, 0, 0, 1, 0, 5.54713, -59.652
 
 [node name="ExitElevator" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.79172, -79 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 9 )
+
+[node name="stage0_appearance" parent="." instance=ExtResource( 10 )]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 140.762, 0, 0, 0, 1, 0, 0, 0, 140.762, 0, -7.85516, 0 )
+mesh = SubResource( 10 )
