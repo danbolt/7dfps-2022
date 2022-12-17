@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/glass_grash.wav-c7492a4ace6c64d93c7d8a092a4faf90.sample"
+
+[deps]
+
+source_file="res://sfx/glass_grash.wav"
+dest_files=[ "res://.import/glass_grash.wav-c7492a4ace6c64d93c7d8a092a4faf90.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

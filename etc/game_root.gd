@@ -5,6 +5,8 @@ onready var curtains: Curtains = $curtains
 
 onready var gameplay_viewport: Viewport = $ViewportContainer/Viewport
 
+onready var title_text: Label = $"Title Cover/Label"
+
 var current_stage: int = 0
 var stages = [
 	{
@@ -101,10 +103,19 @@ func handle_pause_press():
 	elif (get_tree().paused):
 		unpause_game()
 
+func show_title_text(text: String):
+	title_text.visible = true
+	title_text.text = text
+	
+func hide_title_text():
+	title_text.visible = false
+
 func _ready():
 	get_tree().paused = false
 	pause_root.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	title_text.visible = false
 	
 	start_stage(current_stage)
 	curtains.open_curtains()

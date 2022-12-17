@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=6 format=2]
+[gd_resource type="AudioBusLayout" load_steps=8 format=2]
 
 [sub_resource type="AudioEffectDistortion" id=1]
 resource_name = "Distortion"
@@ -21,6 +21,13 @@ band_db/1000_hz = 3.1
 
 [sub_resource type="AudioEffectCompressor" id=5]
 resource_name = "Compressor"
+
+[sub_resource type="AudioEffectReverb" id=7]
+resource_name = "Reverb"
+wet = 0.18
+
+[sub_resource type="AudioEffectChorus" id=6]
+resource_name = "Chorus"
 
 [resource]
 bus/1/name = "Sound Effects"
@@ -45,15 +52,25 @@ bus/3/name = "Voice Lines"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
-bus/3/volume_db = 2.647
+bus/3/volume_db = 1.85375
 bus/3/send = "Master"
 bus/3/effect/0/effect = SubResource( 4 )
 bus/3/effect/0/enabled = true
 bus/3/effect/1/effect = SubResource( 5 )
 bus/3/effect/1/enabled = true
-bus/4/name = "BGM"
+bus/4/name = "Reverb VO"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = -2.11474
-bus/4/send = "Master"
+bus/4/volume_db = 1.85375
+bus/4/send = "Voice Lines"
+bus/4/effect/0/effect = SubResource( 7 )
+bus/4/effect/0/enabled = true
+bus/5/name = "BGM"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = -2.11474
+bus/5/send = "Master"
+bus/5/effect/0/effect = SubResource( 6 )
+bus/5/effect/0/enabled = true

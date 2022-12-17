@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://shapes/cube_shape.tres" type="Shape" id=1]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://bgm/intro.ogg" type="AudioStream" id=5]
 [ext_resource path="res://gameobjects/enemies/DumbDoor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gameobjects/ExitElevator.tscn" type="PackedScene" id=7]
+[ext_resource path="res://bgm/callout.ogg" type="AudioStream" id=8]
+[ext_resource path="res://sfx/glass_grash.wav" type="AudioStream" id=9]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -146,8 +148,17 @@ mesh = SubResource( 2 )
 
 [node name="intro_bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -1.884
+volume_db = -5.652
 bus = "BGM"
+
+[node name="calloutsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 7.535
+bus = "Reverb VO"
+
+[node name="glass_crash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "Sound Effects"
 
 [node name="DumbDoor" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1.4117, 0, 0, 0, 1.21834, 0, 0, 0, 1, 0, 5.54713, -59.6524 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/callout.ogg-2e8a78e8d27ed098335e9af00aca43f5.oggstr"
+
+[deps]
+
+source_file="res://bgm/callout.ogg"
+dest_files=[ "res://.import/callout.ogg-2e8a78e8d27ed098335e9af00aca43f5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
