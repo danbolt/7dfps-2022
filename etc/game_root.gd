@@ -13,6 +13,9 @@ var stages = [
 		'scene': "res://environments/stage0.tscn"
 	},
 	{
+		'scene': "res://environments/stage1.tscn"
+	},
+	{
 		'scene': "res://environments/stage2.tscn"
 	},
 	{

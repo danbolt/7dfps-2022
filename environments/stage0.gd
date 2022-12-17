@@ -29,7 +29,7 @@ func on_ontro_done():
 	
 	intro_bgm.play()
 	
-	yield(get_tree().create_timer(2.0, false), "timeout")
+	yield(get_tree().create_timer(1.0, false), "timeout")
 	
 	glass_crash.play()
 	
@@ -75,7 +75,7 @@ func on_first_phone_up(enemy_dms: EnemyDMs):
 	
 	subscreen.play_stuck_noise()
 	
-	yield(get_tree().create_timer(0.5, false), "timeout")
+	yield(get_tree().create_timer(0.125, false), "timeout")
 	
 	var _connect_enemy_dms_done = enemy_dms.connect("done", self, "on_ontro_done")
 	enemy_dms.play_evil_dracula_intro()
