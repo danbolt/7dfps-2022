@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://shapes/cube_shape.tres" type="Shape" id=1]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environments/stage0.gd" type="Script" id=3]
 [ext_resource path="res://models/uv_pano.material" type="Material" id=4]
+[ext_resource path="res://bgm/intro.ogg" type="AudioStream" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -125,3 +126,8 @@ mesh = SubResource( 3 )
 
 [node name="right_pano" type="MeshInstance" parent="opening_pano"]
 mesh = SubResource( 2 )
+
+[node name="intro_bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -1.884
+bus = "BGM"

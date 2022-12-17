@@ -10,6 +10,8 @@ onready var left_pano = $opening_pano/left_pano
 onready var right_pano = $opening_pano/right_pano
 onready var temp_loor = $tempFloor
 
+onready var intro_bgm = $intro_bgm
+
 var enemy_dms_app = preload("res://hud_elements/app_screens/enemy_dms.tscn")
 
 func kill_panos():
@@ -34,6 +36,8 @@ func on_ontro_done():
 	temp_loor.queue_free()
 	
 	subscreen.show_camera_screen()
+	
+	intro_bgm.play()
 
 func on_first_phone_up(enemy_dms: EnemyDMs):
 	player.disconnect("phone_up", self, "on_first_phone_up")
