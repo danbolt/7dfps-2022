@@ -7,7 +7,11 @@ onready var boss: Carmilla = $Carmilla
 
 onready var entry_nis_shape: Area = $entry_nis_shape
 
+onready var bgm = $intro_bgm
+
 func on_player_enter(_hitbox):
+	bgm.play()
+	
 	boss.disconnect("been_struck", self, "on_boss_struck")
 	entry_nis_shape.disconnect("body_entered", self, "on_player_enter")
 	
@@ -15,7 +19,7 @@ func on_player_enter(_hitbox):
 		return
 	
 	nis.fire_NIS()
-	yield(get_tree().create_timer(nis.turn_time, false), "timeout")
+	yield(get_tree().create_timer(nis.turn_time + nis.wait_time , false), "timeout")
 	
 	get_tree().call_group("listen_for_title", "show_title_text", "Carmilla")
 	

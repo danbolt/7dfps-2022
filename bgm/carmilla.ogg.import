@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/carmilla.ogg-40107a71b0295a48b24132855fa172aa.oggstr"
+
+[deps]
+
+source_file="res://bgm/carmilla.ogg"
+dest_files=[ "res://.import/carmilla.ogg-40107a71b0295a48b24132855fa172aa.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

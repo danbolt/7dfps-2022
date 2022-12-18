@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/EntryElevator.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://environments/boss_room.gd" type="Script" id=7]
 [ext_resource path="res://gameobjects/enemies/PathFlier.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gameobjects/ShieldCover.tscn" type="PackedScene" id=9]
+[ext_resource path="res://bgm/carmilla.ogg" type="AudioStream" id=10]
+[ext_resource path="res://bgm/intro.ogg" type="AudioStream" id=11]
 
 [sub_resource type="NavigationMesh" id=1]
 agent_radius = 0.85
@@ -105,8 +107,20 @@ glow_bloom = 0.21
 
 [sub_resource type="Curve3D" id=15]
 _data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 15.1784, 0, -5.50932, 0, 0, 0, 0, 0, 0, 13.4082, 0, 17.5482, 0, 0, 0, 0, 0, 0, -9.78211, 0, 17.858, 0, 0, 0, 0, 0, 0, -8.89698, 0, -6.83701, 0, 0, 0, 0, 0, 0, 15.1784, 0, -5.50932 ),
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 15.6742, 0, 23.7083, 0, 0, 0, 0, 0, 0, -13.5916, 0, 24.4036, 0, 0, 0, 0, 0, 0, -13.718, 0, -7.83311, 0, 0, 0, 0, 0, 0, 16.0535, 0, -7.95953, 0, 0, 0, 0, 0, 0, 15.6742, 0, 23.7083 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=16]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 4.09355, 1.10609, 3.33786e-06, 0, 0, 0, 0, 0, 0, -11.7719, 31.6361, 2.38419e-06, 0, 0, 0, 0, 0, 0, -29.2809, 20.7009, 2.86102e-06, 0, 0, 0, 0, 0, 0, -26.7525, -1.04302, 3.8147e-06, 0, 0, 0, 0, 0, 0, 4.09355, 1.10609, 3.33786e-06 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=17]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 5.28417, -0.726975, 3.8147e-06, 0, 0, 0, 0, 0, 0, 35.4349, -2.81288, 3.8147e-06, 0, 0, 0, 0, 0, 0, 34.3604, 29.6766, 2.86102e-06, 0, 0, 0, 0, 0, 0, 18.8741, 25.3152, 2.86102e-06, 0, 0, 0, 0, 0, 0, 2.75581, 23.4189, 2.86102e-06, 0, 0, 0, 0, 0, 0, 5.28417, -0.726975, 3.8147e-06 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0 )
 }
 
 [node name="boss_room" type="Spatial"]
@@ -162,6 +176,12 @@ script = ExtResource( 6 )
 boss = NodePath("../Carmilla")
 pointA = NodePath("../Position3D")
 pointB = NodePath("../Position3D2")
+turn_time = 6.0
+wait_time = 1.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="NISCamera"]
+stream = ExtResource( 10 )
+bus = "Voice Lines"
 
 [node name="Position3D" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.844135, 8, 0.0128429 )
@@ -179,9 +199,49 @@ transform = Transform( 1.6, 0, 0, 0, 3.1, 0, 0, 0, 3.5, -17.057, 4, 10.0071 )
 shape = SubResource( 13 )
 
 [node name="PathFlier" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 6.31986, -5.84195 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 13.4138, 6.31986, -5.84195 )
 route_path = NodePath("../Path")
+fly_speed = 3.4
+
+[node name="ShieldCover" parent="PathFlier" instance=ExtResource( 9 )]
+transform = Transform( 2.06677, 0, 6.39488e-14, 0, 2.06677, 0, -6.39488e-14, 0, 2.06677, 0, 0, 0 )
+covered_by = NodePath("../../PathFlier2")
+
+[node name="PathFlier2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -18.3069, 12.3199, -5.84195 )
+route_path = NodePath("../Path2")
+fly_speed = 3.0
+
+[node name="ShieldCover" parent="PathFlier2" instance=ExtResource( 9 )]
+transform = Transform( 2.06677, 0, 6.39488e-14, 0, 2.06677, 0, -6.39488e-14, 0, 2.06677, 0, 0, 0 )
+covered_by = NodePath("../../PathFlier3")
+
+[node name="PathFlier3" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -14.709, 38.3199, 22.1944 )
+route_path = NodePath("../Path3")
+fly_speed = 2.5
+
+[node name="ShieldCover" parent="PathFlier3" instance=ExtResource( 9 )]
+transform = Transform( 2.06677, 0, 6.39488e-14, 0, 2.06677, 0, -6.39488e-14, 0, 2.06677, 0, 0, 0 )
+covered_by = NodePath("../../PathFlier4")
+
+[node name="PathFlier4" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 18.681, 11.3199, 26.1123 )
+route_path = NodePath("../Path3")
 
 [node name="Path" type="Path" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.84947, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.78617, 0 )
 curve = SubResource( 15 )
+
+[node name="Path2" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 13.4138, 8.43305, -5.84195 )
+curve = SubResource( 16 )
+
+[node name="Path3" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -18.3069, 10.1526, -5.84195 )
+curve = SubResource( 17 )
+
+[node name="intro_bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -5.652
+bus = "BGM"

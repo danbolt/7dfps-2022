@@ -6,6 +6,7 @@ onready var curtains: Curtains = $curtains
 onready var gameplay_viewport: Viewport = $ViewportContainer/Viewport
 
 onready var title_text: Label = $"Title Cover/Label"
+onready var subtitle_text: Label = $"Title Cover/Subtitle"
 
 var current_stage: int = 0
 var stages = [
@@ -113,12 +114,20 @@ func show_title_text(text: String):
 func hide_title_text():
 	title_text.visible = false
 
+func show_subtitle_text(text: String):
+	subtitle_text.visible = true
+	subtitle_text.text = text
+	
+func hide_subttitle_text():
+	subtitle_text.visible = false
+
 func _ready():
 	get_tree().paused = false
 	pause_root.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	title_text.visible = false
+	subtitle_text.visible = false
 	
 	start_stage(current_stage)
 	curtains.open_curtains()
