@@ -8,7 +8,7 @@ onready var gameplay_viewport: Viewport = $ViewportContainer/Viewport
 onready var title_text: Label = $"Title Cover/Label"
 onready var subtitle_text: Label = $"Title Cover/Subtitle"
 
-onready var start_game_button: Button = $title_screen/Button
+onready var start_game_button: Button = $title_screen/start_game_button
 
 onready var title_screen: Control = $title_screen
 
@@ -149,3 +149,8 @@ func _ready():
 func _process(_delta):
 	if  Input.is_action_just_pressed("pause"):
 		handle_pause_press()
+		
+#	if (Input.is_action_just_pressed("take_screenshot")):
+#		var image = get_viewport().get_texture().get_data()
+#		image.flip_y()
+#		image.save_png("screenshot" + Time.get_datetime_string_from_system() +  ".png")

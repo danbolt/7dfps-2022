@@ -124,10 +124,10 @@ theme = ExtResource( 7 )
 text = "Start Game"
 
 [node name="7drl_2022" type="Label" parent="title_screen"]
-margin_left = 1298.0
-margin_top = 332.0
-margin_right = 1624.0
-margin_bottom = 390.0
+margin_left = 1223.0
+margin_top = 307.0
+margin_right = 1592.0
+margin_bottom = 365.0
 rect_scale = Vector2( 1.60383, 1.65586 )
 custom_fonts/font = ExtResource( 5 )
-text = "7DRL 2022"
+text = "7DFPS 2022"
