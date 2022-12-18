@@ -14,6 +14,11 @@ onready var navigation_agent: NavigationAgent = $NavigationAgent
 
 onready var animation_player: AnimationPlayer = $attack_goblin_base/AnimationPlayer
 
+
+onready var death_sound = $death_sound
+onready var forget_sound = $forget_sound
+onready var notice_sound = $notice_sound
+
 const DOT_FOV_ANGLE = 0.501
 const DOT_FOV_ANGLE_SUSTAIN = 0.301
 
@@ -34,6 +39,8 @@ func on_struck(_hurtbox):
 	
 	dying = true
 	hurtbox.queue_free()
+	
+	death_sound.play()
 	
 	animation_player.play("die")
 	
@@ -66,6 +73,7 @@ func _physics_process(delta):
 				navigation_agent.set_target_location(chasing_player.global_translation)
 				animation_player.play("alert")
 				look_at(chasing_player.global_translation, Vector3.UP)
+				notice_sound.play()
 				break
 	else:
 		var directionToPlayer: Vector3 = ((chasing_player as Spatial).global_translation - global_translation).normalized()
@@ -74,6 +82,7 @@ func _physics_process(delta):
 		if  (distanceToPlayerSquared > (6.0 * 6.0) and (angleRatio < DOT_FOV_ANGLE_SUSTAIN - 0.3)) or angleRatio < DOT_FOV_ANGLE_SUSTAIN or not has_los(chasing_player):
 			chasing = false
 			chasing_player = null
+			forget_sound.play()
 		
 	
 	var moveDirection = Vector3.ZERO
