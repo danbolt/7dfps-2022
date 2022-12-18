@@ -12,7 +12,7 @@ onready var start_game_button: Button = $title_screen/start_game_button
 
 onready var title_screen: Control = $title_screen
 
-var current_stage: int = 1
+var current_stage: int = 0
 var stages = [
 	{
 		'scene': "res://environments/stage0.tscn"
@@ -42,6 +42,8 @@ func on_player_died():
 	
 	yield(curtains, "finished_closing")
 	
+	hide_title_text()
+	
 	yield(get_tree().create_timer(0.7), "timeout")
 
 	teardown_stage()
@@ -52,6 +54,10 @@ func on_player_died():
 	yield(curtains, "finished_opening")
 
 func on_player_completed_stage():
+	
+	if (current_stage > 0):
+		show_title_text("floor clear")
+	
 	curtains.close_curtains()
 	
 	yield(curtains, "finished_closing")
@@ -60,6 +66,8 @@ func on_player_completed_stage():
 #
 	current_stage = current_stage + 1
 	teardown_stage()
+	
+	hide_title_text()
 	
 	start_stage(current_stage)
 	

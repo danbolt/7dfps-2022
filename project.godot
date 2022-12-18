@@ -123,6 +123,11 @@ _global_script_classes=[ {
 "class": "ShieldCover",
 "language": "GDScript",
 "path": "res://gameobjects/ShieldCover.gd"
+}, {
+"base": "AudioStreamPlayer",
+"class": "StageBGM",
+"language": "GDScript",
+"path": "res://environments/bgm.gd"
 } ]
 _global_script_class_icons={
 "AttackGoblin": "",
@@ -147,7 +152,8 @@ _global_script_class_icons={
 "PlayerApps": "",
 "PlayerMovement": "",
 "PsychadellicSpin": "",
-"ShieldCover": ""
+"ShieldCover": "",
+"StageBGM": ""
 }
 
 [application]

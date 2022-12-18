@@ -1,4 +1,8 @@
-[gd_resource type="AudioBusLayout" load_steps=8 format=2]
+[gd_resource type="AudioBusLayout" load_steps=9 format=2]
+
+[sub_resource type="AudioEffectLimiter" id=8]
+resource_name = "Limiter"
+ceiling_db = -5.8
 
 [sub_resource type="AudioEffectDistortion" id=1]
 resource_name = "Distortion"
@@ -32,11 +36,13 @@ dry = 0.6
 wet = 0.08
 
 [resource]
+bus/0/effect/0/effect = SubResource( 8 )
+bus/0/effect/0/enabled = true
 bus/1/name = "Sound Effects"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -1.91699
+bus/1/volume_db = -1.32149
 bus/1/send = "Master"
 bus/2/name = "PatronizingMusic"
 bus/2/solo = false
@@ -72,7 +78,7 @@ bus/5/name = "BGM"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = -2.91905
+bus/5/volume_db = 0.0
 bus/5/send = "Master"
 bus/5/effect/0/effect = SubResource( 6 )
 bus/5/effect/0/enabled = true

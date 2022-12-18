@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/ExitElevator.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://gameobjects/enemies/PathFlier.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameobjects/enemies/PathFlierShooter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://bgm/bgma.ogg" type="AudioStream" id=7]
+[ext_resource path="res://environments/bgm.gd" type="Script" id=8]
 
 [sub_resource type="NavigationMesh" id=1]
 agent_radius = 0.85
@@ -96,8 +97,8 @@ shot_speed = 9.0
 transform = Transform( -0.555431, 0.329275, 0.763593, -0.0859556, 0.89061, -0.446571, -0.827108, -0.313674, -0.466369, -49.9481, 10.7125, -29.2646 )
 shot_speed = 14.0
 
-[node name="bgm" type="AudioStreamPlayer" parent="."]
+[node name="bgm" type="AudioStreamPlayer" parent="." groups=["listen_for_player_death"]]
 stream = ExtResource( 7 )
-volume_db = -7.0
 autoplay = true
 bus = "BGM"
+script = ExtResource( 8 )

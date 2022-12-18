@@ -254,5 +254,4 @@ curve = SubResource( 17 )
 
 [node name="intro_bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-volume_db = 1.884
 bus = "BGM"

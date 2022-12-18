@@ -30,6 +30,8 @@ export var lock_turns = false
 onready var flip_up_sound = $Camera/Subscreen/FlipUpSound
 onready var flip_down_sound = $Camera/Subscreen/FlipDownSound
 
+onready var death_sond = $death_sound
+
 
 signal phone_up()
 signal phone_down()
@@ -38,7 +40,11 @@ func on_touched_hazard(_node):
 	if (prevent_movement):
 		return
 		
+	death_sond.play()
+		
 	get_tree().call_group("listen_for_player_death", "player_died")
+	get_tree().call_group("listen_for_title", "show_title_text", "Death")
+	
 	prevent_movement = true
 	
 
