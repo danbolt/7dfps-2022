@@ -8,6 +8,10 @@ onready var gameplay_viewport: Viewport = $ViewportContainer/Viewport
 onready var title_text: Label = $"Title Cover/Label"
 onready var subtitle_text: Label = $"Title Cover/Subtitle"
 
+onready var start_game_button: Button = $title_screen/Button
+
+onready var title_screen: Control = $title_screen
+
 var current_stage: int = 0
 var stages = [
 	{
@@ -24,12 +28,6 @@ var stages = [
 	},
 	{
 		'scene': "res://environments/boss_room.tscn"
-	},
-	{
-		'scene': "res://environments/gameplay_test.tscn"
-	},
-	{
-		'scene': "res://environments/corridor_test.tscn"
 	}
 ]
 
@@ -101,6 +99,9 @@ func on_decorators_done():
 func handle_pause_press():
 	if (curtains.is_moving):
 		return
+		
+	if title_screen.visible:
+		return
 	
 	if !(get_tree().paused):
 		pause_game()
@@ -120,17 +121,28 @@ func show_subtitle_text(text: String):
 	
 func hide_subttitle_text():
 	subtitle_text.visible = false
+	
+func on_start_game_pressed():
+	title_screen.visible = false
+	
+	yield(get_tree().create_timer(0.5), "timeout")
+	
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	start_stage(current_stage)
+	
+	yield(get_tree().create_timer(0.25), "timeout")
+	
+	curtains.open_curtains()
 
 func _ready():
 	get_tree().paused = false
 	pause_root.visible = false
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	title_text.visible = false
 	subtitle_text.visible = false
 	
-	start_stage(current_stage)
-	curtains.open_curtains()
+	var _connect_to_start_game = start_game_button.connect("button_down", self, "on_start_game_pressed")
 	
 	var _pause_connect_result = pause_root.connect("done_exiting", self, "on_decorators_done")
 
