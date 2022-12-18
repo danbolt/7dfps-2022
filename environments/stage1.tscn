@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://gameobjects/ExitElevator.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gameobjects/enemies/DumbDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameobjects/enemies/PathFlier.tscn" type="PackedScene" id=6]
+[ext_resource path="res://bgm/bgma.ogg" type="AudioStream" id=7]
 
 [sub_resource type="NavigationMesh" id=1]
 agent_radius = 0.85
@@ -84,3 +85,9 @@ curve = SubResource( 2 )
 [node name="PathA2" type="Path" parent="Paths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0861, 3.71036, -23.1853 )
 curve = SubResource( 2 )
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -7.0
+autoplay = true
+bus = "BGM"

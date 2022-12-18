@@ -152,7 +152,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="7dfps-2022"
+config/name="unfinished-phone-camera-submission"
 run/main_scene="res://etc/game_root.tscn"
 config/icon="res://icon.png"
 

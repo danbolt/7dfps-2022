@@ -12,7 +12,7 @@ onready var start_game_button: Button = $title_screen/start_game_button
 
 onready var title_screen: Control = $title_screen
 
-var current_stage: int = 0
+var current_stage: int = 1
 var stages = [
 	{
 		'scene': "res://environments/stage0.tscn"
@@ -150,7 +150,7 @@ func _process(_delta):
 	if  Input.is_action_just_pressed("pause"):
 		handle_pause_press()
 		
-#	if (Input.is_action_just_pressed("take_screenshot")):
-#		var image = get_viewport().get_texture().get_data()
-#		image.flip_y()
-#		image.save_png("screenshot" + Time.get_datetime_string_from_system() +  ".png")
+	if (Input.is_action_just_pressed("take_screenshot")):
+		var image = get_viewport().get_texture().get_data()
+		image.flip_y()
+		image.save_png("screenshot" + Time.get_datetime_string_from_system() +  ".png")

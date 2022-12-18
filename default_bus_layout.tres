@@ -28,6 +28,8 @@ wet = 0.18
 
 [sub_resource type="AudioEffectChorus" id=6]
 resource_name = "Chorus"
+dry = 0.6
+wet = 0.08
 
 [resource]
 bus/1/name = "Sound Effects"
@@ -70,7 +72,7 @@ bus/5/name = "BGM"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = -2.11474
+bus/5/volume_db = -2.91905
 bus/5/send = "Master"
 bus/5/effect/0/effect = SubResource( 6 )
 bus/5/effect/0/enabled = true
