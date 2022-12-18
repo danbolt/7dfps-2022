@@ -4,6 +4,9 @@ export var covered_by: NodePath
 
 onready var line_geo = $ImmediateGeometry
 
+
+onready var t = 0
+
 func _physics_process(_delta):
 	if (covered_by.is_empty()):
 		queue_free()
@@ -13,7 +16,8 @@ func _physics_process(_delta):
 	if node_covered_by == null:
 		queue_free()
 		
-func _process(_delta):
+func _process(delta):
+	line_geo.scale = (scale as Vector3).inverse()
 	line_geo.global_rotation = Vector3.ZERO
 	line_geo.clear()
 	
@@ -25,9 +29,14 @@ func _process(_delta):
 		return
 		
 	line_geo.begin(Mesh.PRIMITIVE_LINES)
-		
-	# Call last for each vertex, adds the above attributes.
-	line_geo.add_vertex(Vector3.ZERO)
+	
+	var count = 16 + (int(t) % 8)
+	t += delta * 32
+	if (t >= 9.0):
+		t = 0
+	
+	for i in range(0, count):
+		line_geo.add_vertex(lerp(global_translation, node_covered_by.global_translation, float(i) / float(count)) - global_translation)
 
 	line_geo.add_vertex(node_covered_by.global_translation - global_translation)
 
@@ -35,5 +44,5 @@ func _process(_delta):
 	line_geo.end()
 
 func _ready():
-	line_geo.scale = (scale as Vector3).inverse()
+	pass
 	
