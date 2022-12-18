@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bossright.ogg-edbb39c6801e295a333b206b51fd2101.oggstr"
+
+[deps]
+
+source_file="res://bgm/bossright.ogg"
+dest_files=[ "res://.import/bossright.ogg-edbb39c6801e295a333b206b51fd2101.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=13.723

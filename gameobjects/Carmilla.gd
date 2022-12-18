@@ -53,6 +53,8 @@ func on_animation_done(animation_name):
 func on_struck(_hurtbox):
 	if dying:
 		return
+		
+	sfx.stop()
 	
 	dying = true
 	hurtbox.queue_free()

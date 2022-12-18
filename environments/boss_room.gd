@@ -10,7 +10,6 @@ onready var entry_nis_shape: Area = $entry_nis_shape
 onready var bgm = $intro_bgm
 
 func on_player_enter(_hitbox):
-	bgm.play()
 	
 	boss.disconnect("been_struck", self, "on_boss_struck")
 	entry_nis_shape.disconnect("body_entered", self, "on_player_enter")
@@ -39,6 +38,7 @@ func on_boss_struck(_hitbox):
 	entry_nis_shape.queue_free()
 
 func _ready():
+	bgm.play()
 	psych_spin.visible = false
 	
 	var _boss_strike_connect = boss.connect("been_struck", self, "on_boss_struck")
