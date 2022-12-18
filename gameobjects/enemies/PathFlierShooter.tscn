@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gameobjects/enemies/PathFlierShooter.gd" type="Script" id=1]
 [ext_resource path="res://shapes/sphere_shape.tres" type="Shape" id=2]
 [ext_resource path="res://models/flier_alt.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gameobjects/enemies/DemonSphereHurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sfx/little_monster_die.wav" type="AudioStream" id=5]
+[ext_resource path="res://sfx/little_monster_c.wav" type="AudioStream" id=6]
+[ext_resource path="res://sfx/little_monster_a.wav" type="AudioStream" id=7]
 
 [node name="PathFlierShooter" type="KinematicBody"]
 collision_layer = 8
@@ -19,3 +22,21 @@ transform = Transform( 1.82487, 0, 0, 0, 1.64691, -5.86319e-08, 0, -5.86319e-08,
 shape = ExtResource( 2 )
 
 [node name="mesh" parent="." instance=ExtResource( 3 )]
+
+[node name="death_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_size = 30.0
+pitch_scale = 0.91
+bus = "Sound Effects"
+
+[node name="attack_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
+unit_size = 30.0
+pitch_scale = 0.91
+bus = "Sound Effects"
+
+[node name="notice_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 6 )
+unit_size = 30.0
+pitch_scale = 0.91
+bus = "Sound Effects"

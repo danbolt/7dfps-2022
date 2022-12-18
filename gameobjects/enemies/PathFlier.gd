@@ -12,6 +12,8 @@ onready var hurtbox = $DemonSphereHurtbox
 
 var dying: bool = false
 
+onready var death_sound = $death_sound
+
 func on_animation_done(_animation_name):
 	emit_signal("died")
 	
@@ -25,6 +27,8 @@ func on_struck(_hurtbox):
 	dying = true
 	
 	animation_player.play("die")
+	
+	death_sound.play()
 	
 	var _connect_to_anim_finish = animation_player.connect("animation_finished", self, "on_animation_done")
 	

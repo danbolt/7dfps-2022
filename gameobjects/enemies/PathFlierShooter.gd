@@ -14,6 +14,10 @@ var dying: bool = false
 
 var shooting_at: Spatial = null
 
+onready var death_sound = $death_sound
+onready var attack_sound = $attack_sound
+onready var notice_sound = $notice_sound
+
 const DOT_FOV_ANGLE = 0.51
 
 onready var projectile = preload("res://gameobjects/EnemyProjectile.tscn")
@@ -34,6 +38,8 @@ func on_struck(_hurtbox):
 		return
 	
 	hurtbox.queue_free()
+	
+	death_sound.play()
 	
 	dying = true
 	
@@ -71,12 +77,16 @@ func _physics_process(delta):
 			if can_see and has_los(player):
 				shooting_at = player
 				look_at(global_translation - (directionToPlayer), Vector3.UP)
+				notice_sound.pitch_scale = 0.8 + rand_range(0.121, 0.3971)
+				notice_sound.play()
 	else:
-		if global_transform.looking_at(shooting_at.global_translation, Vector3.UP) or (not has_los(shooting_at)):
+		var directionToPlayer: Vector3 = ((shooting_at as Spatial).global_translation - global_translation).normalized()
+		var can_see = global_transform.basis.z.dot(directionToPlayer) > 0.5
+		if not (can_see and has_los(shooting_at)):
 			shooting_at = null
 			animation_player.playback_speed = 0.25
 		else:
-			look_at(shooting_at.global_translation, Vector3.UP)
+			look_at(global_translation - (directionToPlayer), Vector3.UP)
 			
 	if (shooting_at != null):
 		animation_player.playback_speed = 2.0
@@ -88,6 +98,9 @@ func _physics_process(delta):
 			new_proj.fly_dir = (shooting_at.global_translation - global_translation).normalized()
 			new_proj.fly_speed = shot_speed
 			shot_time = 0.0
+			
+			attack_sound.pitch_scale = 0.8 + rand_range(0.121, 0.3971)
+			attack_sound.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

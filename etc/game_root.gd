@@ -12,7 +12,7 @@ onready var start_game_button: Button = $title_screen/start_game_button
 
 onready var title_screen: Control = $title_screen
 
-var current_stage: int = 0
+var current_stage: int = 2
 var stages = [
 	{
 		'scene': "res://environments/stage0.tscn"
