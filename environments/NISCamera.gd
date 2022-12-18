@@ -33,6 +33,14 @@ func fire_NIS():
 	var t = get_tree().create_tween()
 	t.tween_property(self, "global_translation", pointBSpot.global_translation, turn_time).set_trans(Tween.TRANS_CUBIC)
 	
+	
+	var bossToView: Carmilla = get_node_or_null(boss) as Spatial
+	if (bossToView != null):
+		var bossShield = bossToView.get_node_or_null("ShieldCover")
+		if bossShield != null:
+			var tShield = get_tree().create_tween()
+			tShield.tween_property(bossShield, "scale", Vector3(2.067, 2.067, 2.067), 1.0)
+	
 	self.make_current()
 	
 	get_tree().call_group("listen_for_title", "show_subtitle_text", "Alright nerd, this is the end of the line.")
@@ -46,6 +54,8 @@ func fire_NIS():
 	oldCamera.make_current()
 	
 	get_tree().call_group("listen_for_title", "hide_subttitle_text")
+	
+	bossToView.mystic_attack()
 	
 	emit_signal("done_nis")
 

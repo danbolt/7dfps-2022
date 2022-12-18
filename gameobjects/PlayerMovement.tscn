@@ -127,6 +127,7 @@ gui_disable_input = true
 
 [node name="SubCamera" type="Camera" parent="Camera/Subscreen/Viewport"]
 transform = Transform( 0.472845, 0.398434, -0.0958452, 0.0305335, 0.140304, 0.488809, 0.438962, -0.438948, 0.0692428, 0.392, -0.372, 0.03 )
+far = 250.0
 
 [node name="CameraScreen" type="MeshInstance" parent="Camera/Subscreen"]
 transform = Transform( 1, -5.96046e-08, 0, 0, 1.777, -7.45058e-09, -2.23517e-08, -1.49012e-08, 1, 0, 0, 0 )

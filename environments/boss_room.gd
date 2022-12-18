@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var nis: NISCamera = $NISCamera
+onready var nis = $NISCamera
 onready var psych_spin: PsychadellicSpin = $PsychadellicSpin
 
 onready var boss: Carmilla = $Carmilla
@@ -19,7 +19,7 @@ func on_player_enter(_hitbox):
 		return
 	
 	nis.fire_NIS()
-	yield(get_tree().create_timer(nis.turn_time + nis.wait_time , false), "timeout")
+	yield(get_tree().create_timer(nis.turn_time + nis.wait_time - 1.0, false), "timeout")
 	
 	get_tree().call_group("listen_for_title", "show_title_text", "Carmilla")
 	
