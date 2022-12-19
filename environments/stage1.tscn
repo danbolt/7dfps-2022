@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/PlayerMovement.tscn" type="PackedScene" id=2]
@@ -19,6 +19,41 @@ _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -5.20085, 0, -3.10081, 0, 0, 0, 0, 0, 0, -3.84519, 0.988457, 2.53189, 0, 0, 0, 0, 0, 0, 5.15481, -0.0115433, -0.468113, 0, 0, 0, 0, 0, 0, 5.06288, 0, -3.24537, 0, 0, 0, 0, 0, 0, -5.20085, 0, -3.10081 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0 )
 }
+
+[sub_resource type="ProceduralSky" id=10]
+sky_top_color = Color( 0.376471, 0.317647, 0.317647, 1 )
+sky_horizon_color = Color( 1, 0.505882, 0.0705882, 1 )
+sky_curve = 0.0535144
+ground_bottom_color = Color( 0, 0, 0, 1 )
+ground_horizon_color = Color( 0.235294, 0.129412, 0.0392157, 1 )
+ground_curve = 0.00933032
+ground_energy = 0.88
+sun_color = Color( 1, 0.113725, 0.113725, 1 )
+sun_latitude = 124.25
+sun_longitude = -180.0
+sun_angle_min = 3.0
+sun_curve = 0.0287174
+sun_energy = 42.52
+
+[sub_resource type="Environment" id=9]
+background_mode = 2
+background_sky = SubResource( 10 )
+ambient_light_color = Color( 0.266667, 0.12549, 0.337255, 1 )
+ambient_light_energy = 4.03
+ambient_light_sky_contribution = 0.19
+fog_enabled = true
+fog_color = Color( 0.384314, 0.337255, 0.235294, 1 )
+fog_sun_color = Color( 0.623529, 0.521569, 0.521569, 1 )
+fog_sun_amount = 0.97
+fog_depth_end = 1102.7
+fog_depth_curve = 1.31951
+fog_transmit_curve = 0.63728
+fog_height_min = 5.0
+fog_height_max = -30.5
+fog_height_curve = 0.34151
+glow_enabled = true
+glow_intensity = 3.07
+glow_bloom = 0.21
 
 [node name="stage1" type="Spatial"]
 
@@ -92,3 +127,6 @@ stream = ExtResource( 7 )
 autoplay = true
 bus = "BGM"
 script = ExtResource( 8 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 9 )

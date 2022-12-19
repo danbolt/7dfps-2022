@@ -52,6 +52,7 @@ margin_bottom = 1080.0
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
 pause_mode = 1
 size = Vector2( 1920, 1080 )
+size_override_stretch = true
 handle_input_locally = false
 render_target_update_mode = 3
 audio_listener_enable_2d = true
@@ -108,13 +109,13 @@ margin_right = 1760.0
 margin_bottom = 848.0
 
 [node name="logotype" type="Label" parent="title_screen"]
-margin_left = 122.0
-margin_top = 146.0
-margin_right = 1527.0
-margin_bottom = 609.0
-rect_scale = Vector2( 0.641785, 0.969759 )
+margin_left = 140.0
+margin_top = 136.0
+margin_right = 1545.0
+margin_bottom = 599.0
+rect_scale = Vector2( 1.16682, 1.03537 )
 custom_fonts/font = ExtResource( 4 )
-text = "unfinished phone camera submission"
+text = "DIVINE STRIKE"
 
 [node name="start_game_button" type="Button" parent="title_screen"]
 margin_left = 295.0
@@ -125,10 +126,37 @@ theme = ExtResource( 7 )
 text = "Start Game"
 
 [node name="7drl_2022" type="Label" parent="title_screen"]
-margin_left = 1223.0
-margin_top = 307.0
-margin_right = 1592.0
-margin_bottom = 365.0
-rect_scale = Vector2( 1.60383, 1.65586 )
+margin_left = 763.0
+margin_top = 322.0
+margin_right = 1833.0
+margin_bottom = 380.0
+grow_horizontal = 0
+rect_scale = Vector2( 0.681344, 0.899433 )
 custom_fonts/font = ExtResource( 5 )
-text = "7DFPS 2022"
+text = "a submission for 7DFPS 2022"
+align = 2
+
+[node name="controls" type="Label" parent="title_screen"]
+margin_left = 590.0
+margin_top = 693.0
+margin_right = 1660.0
+margin_bottom = 934.0
+grow_horizontal = 0
+rect_scale = Vector2( 0.661062, 0.759673 )
+custom_fonts/font = ExtResource( 5 )
+text = "- RMB/LT brings up your cell phone
+- LMB/RT charges up an attack
+- aim your phone on the monsters
+- don't get killed"
+autowrap = true
+
+[node name="url" type="Label" parent="title_screen"]
+margin_left = 1233.0
+margin_top = 919.0
+margin_right = 2303.0
+margin_bottom = 1160.0
+grow_horizontal = 0
+rect_scale = Vector2( 0.704512, 0.626402 )
+custom_fonts/font = ExtResource( 5 )
+text = "https://danbolt.itch.io/"
+autowrap = true

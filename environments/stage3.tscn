@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://models/environment/castle_interior.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://gameobjects/EntryElevator.tscn" type="PackedScene" id=2]
@@ -15,6 +15,40 @@ polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 4, 3, 5 ), PoolIntArray( 5, 
 agent_radius = 0.85
 agent_max_slope = 75.22
 edge_max_error = 1.4
+
+[sub_resource type="ProceduralSky" id=10]
+sky_top_color = Color( 0.376471, 0.317647, 0.317647, 1 )
+sky_horizon_color = Color( 1, 0.505882, 0.0705882, 1 )
+sky_curve = 0.0535144
+ground_bottom_color = Color( 0, 0, 0, 1 )
+ground_horizon_color = Color( 0.235294, 0.129412, 0.0392157, 1 )
+ground_curve = 0.00933032
+ground_energy = 0.88
+sun_color = Color( 1, 0.113725, 0.113725, 1 )
+sun_latitude = 124.25
+sun_longitude = -180.0
+sun_angle_min = 3.0
+sun_curve = 0.0287174
+sun_energy = 42.52
+
+[sub_resource type="Environment" id=11]
+background_mode = 2
+background_sky = SubResource( 10 )
+ambient_light_color = Color( 0.337255, 0.298039, 0.12549, 1 )
+ambient_light_sky_contribution = 0.36
+fog_enabled = true
+fog_color = Color( 0.596078, 0.105882, 0.47451, 1 )
+fog_sun_color = Color( 1, 0.819608, 0, 1 )
+fog_sun_amount = 0.97
+fog_depth_begin = 3.3
+fog_depth_curve = 1.56917
+fog_transmit_curve = 0.63728
+fog_height_min = 5.0
+fog_height_max = -30.5
+fog_height_curve = 0.34151
+glow_enabled = true
+glow_intensity = 3.07
+glow_bloom = 0.21
 
 [node name="stage1" type="Spatial"]
 
@@ -73,3 +107,6 @@ stream = ExtResource( 7 )
 autoplay = true
 bus = "BGM"
 script = ExtResource( 8 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 11 )

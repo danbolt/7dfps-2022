@@ -48,7 +48,7 @@ surfaces/0 = {
 "vertex_count": 287
 }
 
-[sub_resource type="ProceduralSky" id=8]
+[sub_resource type="ProceduralSky" id=11]
 sky_top_color = Color( 0.376471, 0.317647, 0.317647, 1 )
 sky_horizon_color = Color( 1, 0.505882, 0.0705882, 1 )
 sky_curve = 0.0535144
@@ -57,7 +57,6 @@ ground_horizon_color = Color( 0.235294, 0.129412, 0.0392157, 1 )
 ground_curve = 0.00933032
 ground_energy = 0.88
 sun_color = Color( 1, 0.113725, 0.113725, 1 )
-sun_latitude = 124.25
 sun_longitude = -180.0
 sun_angle_min = 3.0
 sun_curve = 0.0287174
@@ -65,7 +64,7 @@ sun_energy = 42.52
 
 [sub_resource type="Environment" id=9]
 background_mode = 2
-background_sky = SubResource( 8 )
+background_sky = SubResource( 11 )
 ambient_light_color = Color( 0.337255, 0.12549, 0.12549, 1 )
 ambient_light_energy = 4.03
 ambient_light_sky_contribution = 0.19
